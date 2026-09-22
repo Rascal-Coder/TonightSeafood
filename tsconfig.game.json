@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "skipLibCheck": true, "target": "ES2020", "module": "ES2020" },
+  "include": ["assets/scripts/**/*.ts"],
+  "exclude": ["extensions", "tests", "library", "temp"]
+}

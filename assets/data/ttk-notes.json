@@ -1,0 +1,46 @@
+{
+  "leakTravelSecAtSpeed68": 8.82,
+  "star1": [
+    {
+      "id": "shrimp",
+      "dps": 10,
+      "ratSeconds": 4.2
+    },
+    {
+      "id": "crab",
+      "dps": 15.65,
+      "ratSeconds": 2.68
+    },
+    {
+      "id": "oyster",
+      "dps": 19.43,
+      "ratSeconds": 2.16
+    },
+    {
+      "id": "scallop",
+      "dps": 9.52,
+      "ratSeconds": 4.41
+    },
+    {
+      "id": "squid",
+      "dps": 6.15,
+      "ratSeconds": 6.83
+    },
+    {
+      "id": "urchin",
+      "dps": 7.5,
+      "ratSeconds": 5.6
+    },
+    {
+      "id": "fish",
+      "dps": 13.91,
+      "ratSeconds": 3.02
+    },
+    {
+      "id": "octopus",
+      "dps": 11,
+      "ratSeconds": 3.82
+    }
+  ],
+  "note": "偷吃鼠 42 血、速度 68，从入场线走到灯火线 600 像素约 8.8 秒。小虾单目标约 4.2 秒击杀，教程期一只虾打得过一只鼠，两只重叠就会漏。"
+}

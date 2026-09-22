@@ -1,0 +1,833 @@
+[
+  {
+    "id": "B001",
+    "name": "爆蒜",
+    "rarity": "common",
+    "desc": "蒜蓉爆香半径 ×1.35",
+    "effects": [
+      {
+        "stat": "garlic.explodeRadiusMul",
+        "op": "mul",
+        "value": 1.35
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B002",
+    "name": "海鲜快手",
+    "rarity": "common",
+    "desc": "虾类攻击间隔 ×0.80",
+    "effects": [
+      {
+        "stat": "species.shrimp.intervalMul",
+        "op": "mul",
+        "value": 0.8
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B003",
+    "name": "厚网",
+    "rarity": "common",
+    "desc": "捞网半径 ×1.20",
+    "effects": [
+      {
+        "stat": "net.radiusMul",
+        "op": "mul",
+        "value": 1.2
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B004",
+    "name": "多带一筐",
+    "rarity": "common",
+    "desc": "海鲜池容量 +3",
+    "effects": [
+      {
+        "stat": "pond.capacityAdd",
+        "op": "add",
+        "value": 3
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B005",
+    "name": "捞回来",
+    "rarity": "common",
+    "desc": "料理单位死亡时 15% 以 1 星回到海鲜池",
+    "effects": [
+      {
+        "stat": "seafood.deathReturnChance",
+        "op": "add",
+        "value": 0.15
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B006",
+    "name": "深网",
+    "rarity": "common",
+    "desc": "海鲜池可以刷出黄金海鲜",
+    "effects": [
+      {
+        "stat": "flag.catchGold",
+        "op": "flag",
+        "value": true
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B007",
+    "name": "辣油弹射",
+    "rarity": "common",
+    "desc": "麻辣连锁次数 +1",
+    "effects": [
+      {
+        "stat": "spicy.chainAdd",
+        "op": "add",
+        "value": 1
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B008",
+    "name": "薄冰",
+    "rarity": "common",
+    "desc": "冰鲜减速 +10 个百分点",
+    "effects": [
+      {
+        "stat": "ice.slowAdd",
+        "op": "add",
+        "value": 0.1
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B009",
+    "name": "重钳",
+    "rarity": "common",
+    "desc": "蟹击退 +20",
+    "effects": [
+      {
+        "stat": "species.crab.knockbackAdd",
+        "op": "add",
+        "value": 20
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B010",
+    "name": "珍珠溅射",
+    "rarity": "common",
+    "desc": "生蚝命中溅射半径 36，溅射伤害 35%",
+    "effects": [
+      {
+        "stat": "species.oyster.splashRadius",
+        "op": "set",
+        "value": 36
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B011",
+    "name": "扇贝开口",
+    "rarity": "common",
+    "desc": "扇贝扇形角度 +30°",
+    "effects": [
+      {
+        "stat": "species.scallop.coneAdd",
+        "op": "add",
+        "value": 30
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B012",
+    "name": "多一只触手",
+    "rarity": "common",
+    "desc": "章鱼同时攻击目标 +1",
+    "effects": [
+      {
+        "stat": "species.octopus.targetsAdd",
+        "op": "add",
+        "value": 1
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B013",
+    "name": "鱼骨利刃",
+    "rarity": "common",
+    "desc": "海鱼穿透 +1",
+    "effects": [
+      {
+        "stat": "species.fish.pierceAdd",
+        "op": "add",
+        "value": 1
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B014",
+    "name": "胆刺加密",
+    "rarity": "common",
+    "desc": "海胆尖刺 +2",
+    "effects": [
+      {
+        "stat": "species.urchin.spikesAdd",
+        "op": "add",
+        "value": 2
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B015",
+    "name": "快捞",
+    "rarity": "common",
+    "desc": "捞网冷却 ×0.75",
+    "effects": [
+      {
+        "stat": "net.cooldownMul",
+        "op": "mul",
+        "value": 0.75
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B016",
+    "name": "稳手",
+    "rarity": "common",
+    "desc": "槽位吸附半径 +16",
+    "effects": [
+      {
+        "stat": "slot.snapRadiusAdd",
+        "op": "add",
+        "value": 16
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B017",
+    "name": "旺灯",
+    "rarity": "common",
+    "desc": "灯火上限 +4",
+    "effects": [
+      {
+        "stat": "lantern.maxAdd",
+        "op": "add",
+        "value": 4
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B018",
+    "name": "小费",
+    "rarity": "common",
+    "desc": "金币掉落 ×1.25",
+    "effects": [
+      {
+        "stat": "gold.mul",
+        "op": "mul",
+        "value": 1.25
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B019",
+    "name": "活水",
+    "rarity": "common",
+    "desc": "海鲜池刷新间隔 ×0.85",
+    "effects": [
+      {
+        "stat": "pond.spawnIntervalMul",
+        "op": "mul",
+        "value": 0.85
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B020",
+    "name": "蒸汽久留",
+    "rarity": "common",
+    "desc": "清蒸增益持续时间 +1.5 秒",
+    "effects": [
+      {
+        "stat": "steam.buffDurationAdd",
+        "op": "add",
+        "value": 1.5
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B021",
+    "name": "炭火旺",
+    "rarity": "common",
+    "desc": "炭烤灼烧每秒伤害 ×1.30",
+    "effects": [
+      {
+        "stat": "char.burnDpsMul",
+        "op": "mul",
+        "value": 1.3
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B022",
+    "name": "椒盐脆",
+    "rarity": "common",
+    "desc": "椒盐暴击率 +0.06",
+    "effects": [
+      {
+        "stat": "pepper.critAdd",
+        "op": "add",
+        "value": 0.06
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B023",
+    "name": "蒜香残留",
+    "rarity": "common",
+    "desc": "蒜蓉持续伤害时间 +1 秒",
+    "effects": [
+      {
+        "stat": "garlic.dotDurationAdd",
+        "op": "add",
+        "value": 1
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B024",
+    "name": "墨圈扩大",
+    "rarity": "common",
+    "desc": "鱿鱼墨圈半径 ×1.25",
+    "effects": [
+      {
+        "stat": "species.squid.inkRadiusMul",
+        "op": "mul",
+        "value": 1.25
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B025",
+    "name": "铁盘护位",
+    "rarity": "common",
+    "desc": "潮水推移料理位的距离 ×0.50",
+    "effects": [
+      {
+        "stat": "slot.tideResistMul",
+        "op": "mul",
+        "value": 0.5
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B026",
+    "name": "后厨长筷",
+    "rarity": "common",
+    "desc": "后排单位射程 +24",
+    "effects": [
+      {
+        "stat": "slot.backRangeAdd",
+        "op": "add",
+        "value": 24
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B027",
+    "name": "邻里帮厨",
+    "rarity": "common",
+    "desc": "相邻同种类攻速间隔 ×0.92",
+    "effects": [
+      {
+        "stat": "adjacent.sameTypeIntervalMul",
+        "op": "mul",
+        "value": 0.92
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B028",
+    "name": "双响",
+    "rarity": "common",
+    "desc": "一次正好捞到 2 只相同海鲜时，合成星级再 +1",
+    "effects": [
+      {
+        "stat": "scoop.pairStarBonus",
+        "op": "add",
+        "value": 1
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B029",
+    "name": "小骨奖",
+    "rarity": "common",
+    "desc": "普通敌人 8% 额外掉 1 鱼骨",
+    "effects": [
+      {
+        "stat": "fishbone.smallDropChance",
+        "op": "add",
+        "value": 0.08
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B030",
+    "name": "夜市加单",
+    "rarity": "common",
+    "desc": "每击倒 20 个敌人，海鲜池下一只必为带调料海鲜",
+    "effects": [
+      {
+        "stat": "pond.seasonedEveryKills",
+        "op": "set",
+        "value": 20
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B031",
+    "name": "麻辣连锅",
+    "rarity": "rare",
+    "desc": "麻辣连锁 +2，且可以跳到飞行单位",
+    "effects": [
+      {
+        "stat": "spicy.chainAdd",
+        "op": "add",
+        "value": 2
+      }
+    ],
+    "flags": [
+      "spicy.chainHitsFlying"
+    ]
+  },
+  {
+    "id": "B032",
+    "name": "结冰",
+    "rarity": "rare",
+    "desc": "冰鲜冻结时间 ×1.75",
+    "effects": [
+      {
+        "stat": "ice.freezeDurationMul",
+        "op": "mul",
+        "value": 1.75
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B033",
+    "name": "火焰水路",
+    "rarity": "rare",
+    "desc": "炭烤燃烧路径宽度 ×1.50",
+    "effects": [
+      {
+        "stat": "char.trailWidthMul",
+        "op": "mul",
+        "value": 1.5
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B034",
+    "name": "鲜味共鸣",
+    "rarity": "rare",
+    "desc": "清蒸脉冲同时给予 +20% 伤害",
+    "effects": [
+      {
+        "stat": "steam.damageBuff",
+        "op": "set",
+        "value": 0.2
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B035",
+    "name": "黄金眼",
+    "rarity": "rare",
+    "desc": "黄金海鲜出现概率 +6%",
+    "effects": [
+      {
+        "stat": "pond.goldChanceAdd",
+        "op": "add",
+        "value": 0.06
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B036",
+    "name": "一网三鲜",
+    "rarity": "rare",
+    "desc": "捞网容量 +1",
+    "effects": [
+      {
+        "stat": "net.capacityAdd",
+        "op": "add",
+        "value": 1
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B037",
+    "name": "拼盘师傅",
+    "rarity": "rare",
+    "desc": "海鲜拼盘必定额外获得 1 个调料进度",
+    "effects": [
+      {
+        "stat": "flag.platterGivesSeasoning",
+        "op": "flag",
+        "value": true
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B038",
+    "name": "破壳",
+    "rarity": "rare",
+    "desc": "椒盐单位无视 50% 护甲",
+    "effects": [
+      {
+        "stat": "pepper.armorIgnore",
+        "op": "set",
+        "value": 0.5
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B039",
+    "name": "防空夹",
+    "rarity": "rare",
+    "desc": "近战可以以 70% 伤害命中飞行单位",
+    "effects": [
+      {
+        "stat": "melee.flyingHitMul",
+        "op": "set",
+        "value": 0.7
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B040",
+    "name": "猫怕热",
+    "rarity": "rare",
+    "desc": "场上有麻辣或炭烤时，偷海鲜成功率 -40%",
+    "effects": [
+      {
+        "stat": "thief.failIfHeat",
+        "op": "set",
+        "value": 0.4
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B041",
+    "name": "连珠",
+    "rarity": "rare",
+    "desc": "虾额外发射 1 颗弹，该弹伤害 ×0.65",
+    "effects": [
+      {
+        "stat": "species.shrimp.extraPelletMul",
+        "op": "set",
+        "value": 0.65
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B042",
+    "name": "加一只盘",
+    "rarity": "rare",
+    "desc": "料理位 +1",
+    "effects": [
+      {
+        "stat": "slot.countAdd",
+        "op": "add",
+        "value": 1
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B043",
+    "name": "回锅",
+    "rarity": "rare",
+    "desc": "合成时保留被吃掉那只的料理，并继承其 30% 伤害加成 8 秒",
+    "effects": [
+      {
+        "stat": "merge.keepDamageMul",
+        "op": "set",
+        "value": 0.3
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B044",
+    "name": "慢火",
+    "rarity": "rare",
+    "desc": "生蚝与海鱼间隔 ×1.15，伤害 ×1.45",
+    "effects": [
+      {
+        "stat": "slowFire.damageMul",
+        "op": "set",
+        "value": 1.45
+      },
+      {
+        "stat": "slowFire.intervalMul",
+        "op": "set",
+        "value": 1.15
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B045",
+    "name": "赶场",
+    "rarity": "rare",
+    "desc": "波次时长 ×0.90，金币 ×1.20",
+    "effects": [
+      {
+        "stat": "wave.durationMul",
+        "op": "mul",
+        "value": 0.9
+      },
+      {
+        "stat": "gold.mul",
+        "op": "mul",
+        "value": 1.2
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B046",
+    "name": "地狱小灶",
+    "rarity": "epic",
+    "desc": "麻辣每第 5 次攻击改为窄辣油波，宽 180，伤害 80%",
+    "effects": [
+      {
+        "stat": "spicy.oilWaveWidth",
+        "op": "set",
+        "value": 180
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B047",
+    "name": "冰海",
+    "rarity": "epic",
+    "desc": "冻结时间 ×1.50，被冻结敌人受伤 ×1.25",
+    "effects": [
+      {
+        "stat": "ice.frozenTakenMul",
+        "op": "set",
+        "value": 1.25
+      },
+      {
+        "stat": "ice.freezeDurationMul",
+        "op": "mul",
+        "value": 1.5
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B048",
+    "name": "蟹阵",
+    "rarity": "epic",
+    "desc": "场上至少 3 只蟹时，每次蟹攻击有 20% 概率全体螃蟹一起攻击",
+    "effects": [
+      {
+        "stat": "crab.syncChance",
+        "op": "set",
+        "value": 0.2
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B049",
+    "name": "龙鱼斩",
+    "rarity": "epic",
+    "desc": "海鱼每 8 秒有一次攻击变为无限穿透且宽度 ×2",
+    "effects": [
+      {
+        "stat": "fish.dragonEverySec",
+        "op": "set",
+        "value": 8
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B050",
+    "name": "千手",
+    "rarity": "epic",
+    "desc": "章鱼同时攻击目标变为 5",
+    "effects": [
+      {
+        "stat": "species.octopus.targetsSet",
+        "op": "set",
+        "value": 5
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B051",
+    "name": "爆炒",
+    "rarity": "epic",
+    "desc": "解锁主动技能：全体攻击间隔 ×0.50，持续 5 秒，冷却 28 秒",
+    "effects": [
+      {
+        "stat": "active.stirFry",
+        "op": "unlock",
+        "value": {
+          "duration": 5,
+          "intervalMul": 0.5,
+          "cooldown": 28
+        }
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B052",
+    "name": "深海菜单",
+    "rarity": "epic",
+    "desc": "传说升级出现权重 +8%",
+    "effects": [
+      {
+        "stat": "draft.legendaryWeightAdd",
+        "op": "add",
+        "value": 0.08
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B053",
+    "name": "摊位扩建",
+    "rarity": "epic",
+    "desc": "料理位 +2，海鲜池容量 +4",
+    "effects": [
+      {
+        "stat": "slot.countAdd",
+        "op": "add",
+        "value": 2
+      },
+      {
+        "stat": "pond.capacityAdd",
+        "op": "add",
+        "value": 4
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B054",
+    "name": "一网打尽",
+    "rarity": "legendary",
+    "desc": "解锁主动：捞起池中全部海鲜，忽略容量，冷却 45 秒。捞网容量 +1",
+    "effects": [
+      {
+        "stat": "active.haulAll",
+        "op": "unlock",
+        "value": {
+          "cooldown": 45
+        }
+      },
+      {
+        "stat": "net.capacityAdd",
+        "op": "add",
+        "value": 1
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B055",
+    "name": "满汉全席",
+    "rarity": "legendary",
+    "desc": "场上至少 4 种海鲜时，全部招牌联动以 50% 强度生效，即使料理不匹配",
+    "effects": [
+      {
+        "stat": "signature.banquetMul",
+        "op": "set",
+        "value": 0.5
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B056",
+    "name": "夜市烟火",
+    "rarity": "legendary",
+    "desc": "每 12 秒随机一个已部署招牌技能额外触发一次",
+    "effects": [
+      {
+        "stat": "signature.extraEverySec",
+        "op": "set",
+        "value": 12
+      }
+    ],
+    "flags": []
+  },
+  {
+    "id": "B057",
+    "name": "围裙续灯",
+    "rarity": "legendary",
+    "desc": "灯火归零时每局一次回到 5 点并冻结敌人 2 秒。Boss 受到伤害 +20%",
+    "effects": [
+      {
+        "stat": "lantern.onceSave",
+        "op": "set",
+        "value": 5
+      }
+    ],
+    "flags": []
+  }
+]

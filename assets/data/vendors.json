@@ -1,0 +1,35 @@
+[
+  {
+    "id": "vendor_lang",
+    "name": "阿浪",
+    "role": "新手",
+    "passive": "捞网跟随速度 +10%（followLerp ×1.10）",
+    "active": {
+      "name": "海浪",
+      "cooldown": 24,
+      "rule": "把地面敌人沿入口方向推回 160 像素。飞行单位只减速 40% 共 1.5 秒。"
+    }
+  },
+  {
+    "id": "vendor_garlic",
+    "name": "蒜王",
+    "role": "蒜蓉",
+    "passive": "蒜蓉爆香伤害系数 +0.15",
+    "active": {
+      "name": "爆香一锅",
+      "cooldown": 22,
+      "rule": "所有蒜蓉单位立刻按当前攻击伤害打一次爆香。"
+    }
+  },
+  {
+    "id": "vendor_spicy",
+    "name": "辣妹",
+    "role": "麻辣",
+    "passive": "麻辣单位攻击间隔再 ×0.92",
+    "active": {
+      "name": "爆炒",
+      "cooldown": 26,
+      "rule": "全体攻击间隔 ×0.50，持续 5 秒。"
+    }
+  }
+]

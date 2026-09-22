@@ -1,0 +1,13 @@
+{
+  "name": "tonight-seafood",
+  "uuid": "a7c3e1d4-6b28-4f0a-9c55-1d8e7f0a2b64",
+  "version": "0.1.0",
+  "scripts": {
+    "test": "node --import ./tools/test-loader.mjs --test tests/*.test.ts",
+    "simulate": "node --import ./tools/test-loader.mjs tools/simulate-run.ts",
+    "generate:audio": "node tools/generate-audio.mjs"
+  },
+  "creator": {
+    "version": "3.8.8"
+  }
+}

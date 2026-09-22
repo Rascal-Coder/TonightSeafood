@@ -1,0 +1,224 @@
+[
+  {
+    "id": "R001",
+    "name": "蒜瓣",
+    "chain": [
+      "蒜瓣",
+      "蒜球",
+      "火蒜",
+      "爆蒜头"
+    ],
+    "stat": "garlic.dotDamage",
+    "perTier": [
+      2,
+      4,
+      7,
+      0
+    ],
+    "grantAt4": "X004"
+  },
+  {
+    "id": "R002",
+    "name": "辣椒",
+    "chain": [
+      "辣椒",
+      "朝天椒",
+      "魔鬼椒",
+      "地狱辣椒"
+    ],
+    "stat": "spicy.chainDamageMul",
+    "perTier": [
+      1.1,
+      1.25,
+      1.45,
+      0
+    ],
+    "grantAt4": "X001"
+  },
+  {
+    "id": "R003",
+    "name": "花椒",
+    "chain": [
+      "花椒",
+      "大红袍",
+      "藤椒",
+      "麻椒王"
+    ],
+    "stat": "pepper.critDamageAdd",
+    "perTier": [
+      0.15,
+      0.3,
+      0.5,
+      0.75
+    ],
+    "grantAt4": null
+  },
+  {
+    "id": "R004",
+    "name": "柠檬",
+    "chain": [
+      "柠檬",
+      "青柠",
+      "黄柠",
+      "冻柠"
+    ],
+    "stat": "ice.slowAdd",
+    "perTier": [
+      0.05,
+      0.1,
+      0.16,
+      0.24
+    ],
+    "grantAt4": null
+  },
+  {
+    "id": "R005",
+    "name": "酱油",
+    "chain": [
+      "酱油",
+      "生抽",
+      "老抽",
+      "头抽"
+    ],
+    "stat": "mark.colorDamageMul",
+    "perTier": [
+      0.3,
+      0.4,
+      0.55,
+      0.75
+    ],
+    "grantAt4": null,
+    "rule": "命中叠上色。3 层时追加一次标记伤害。"
+  },
+  {
+    "id": "R006",
+    "name": "芥末",
+    "chain": [
+      "芥末",
+      "青芥",
+      "辣芥",
+      "冲鼻芥"
+    ],
+    "stat": "sneeze.radius",
+    "perTier": [
+      70,
+      100,
+      130,
+      170
+    ],
+    "grantAt4": null,
+    "rule": "每 8 秒打一个喷嚏，击退半径内敌人。4 阶硬直 0.4 秒。"
+  },
+  {
+    "id": "R007",
+    "name": "胡椒",
+    "chain": [
+      "胡椒",
+      "白胡椒",
+      "黑胡椒",
+      "混合胡椒"
+    ],
+    "stat": "projectile.speedMul",
+    "perTier": [
+      1.1,
+      1.18,
+      1.28,
+      1.4
+    ],
+    "grantAt4": null,
+    "rule": "同时暴击率 +0.02 / +0.04 / +0.06 / +0.1。"
+  },
+  {
+    "id": "R008",
+    "name": "葱花",
+    "chain": [
+      "葱花",
+      "香葱",
+      "大葱",
+      "葱龙"
+    ],
+    "stat": "steam.extraAllies",
+    "perTier": [
+      1,
+      1,
+      2,
+      3
+    ],
+    "grantAt4": null
+  },
+  {
+    "id": "R009",
+    "name": "黄油",
+    "chain": [
+      "黄油",
+      "蒜油",
+      "焦黄油",
+      "金黄油"
+    ],
+    "stat": "butter.knockbackMul",
+    "perTier": [
+      1.15,
+      1.3,
+      1.5,
+      1.8
+    ],
+    "grantAt4": null,
+    "rule": "被击中的敌人下一次受到的击退按倍率提高。"
+  },
+  {
+    "id": "R010",
+    "name": "冰块",
+    "chain": [
+      "冰块",
+      "碎冰",
+      "冰砖",
+      "冰山"
+    ],
+    "stat": "ice.freezeStacks",
+    "perTier": [
+      4,
+      3,
+      3,
+      0
+    ],
+    "grantAt4": "X002",
+    "rule": "降低触发冻结所需层数。4 阶改为屏幕技能。"
+  },
+  {
+    "id": "R011",
+    "name": "木炭",
+    "chain": [
+      "木炭",
+      "果木炭",
+      "备长炭",
+      "龙炭"
+    ],
+    "stat": "char.burnSecAdd",
+    "perTier": [
+      0.4,
+      0.8,
+      1.3,
+      0
+    ],
+    "grantAt4": "X003"
+  },
+  {
+    "id": "R012",
+    "name": "海盐",
+    "chain": [
+      "海盐",
+      "粗盐",
+      "玫瑰盐",
+      "晶盐"
+    ],
+    "stat": "salt.critAdd",
+    "perTier": [
+      0.03,
+      0.05,
+      0.08,
+      0.12
+    ],
+    "grantAt4": null,
+    "rule": "暴击时额外无视 2 / 4 / 7 / 12 点护甲。"
+  }
+]

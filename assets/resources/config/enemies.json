@@ -1,0 +1,171 @@
+[
+  {
+    "id": "E001",
+    "name": "偷吃鼠",
+    "hp": 42,
+    "speed": 68,
+    "armor": 0,
+    "gold": 1,
+    "radius": 18,
+    "air": false,
+    "tags": [
+      "basic"
+    ],
+    "ability": "沿直线走向灯火。无特殊能力。"
+  },
+  {
+    "id": "E002",
+    "name": "快跑鼠",
+    "hp": 24,
+    "speed": 118,
+    "armor": 0,
+    "gold": 1,
+    "radius": 16,
+    "air": false,
+    "tags": [
+      "fast"
+    ],
+    "ability": "只靠速度。控制单位能拉开处理时间。"
+  },
+  {
+    "id": "E003",
+    "name": "铁桶鼠",
+    "hp": 86,
+    "speed": 42,
+    "armor": 4,
+    "gold": 2,
+    "radius": 22,
+    "air": false,
+    "tags": [
+      "armored"
+    ],
+    "ability": "护甲减平坦伤害。持续伤害只吃 50% 护甲。"
+  },
+  {
+    "id": "E004",
+    "name": "醉猫",
+    "hp": 96,
+    "speed": 46,
+    "armor": 0,
+    "gold": 2,
+    "radius": 24,
+    "air": false,
+    "tags": [
+      "dash"
+    ],
+    "ability": "每 3 秒朝灯火冲刺 0.55 秒，冲刺速度 150，期间击退抗性 50%。"
+  },
+  {
+    "id": "E005",
+    "name": "海鸥",
+    "hp": 38,
+    "speed": 84,
+    "armor": 0,
+    "gold": 2,
+    "radius": 18,
+    "air": true,
+    "tags": [
+      "flying"
+    ],
+    "ability": "飞行。近战默认打不中。被击落前不走地面减速带。"
+  },
+  {
+    "id": "E006",
+    "name": "寄居蟹",
+    "hp": 170,
+    "speed": 30,
+    "armor": 12,
+    "gold": 3,
+    "radius": 26,
+    "air": false,
+    "tags": [
+      "armored",
+      "slow"
+    ],
+    "ability": "高护甲慢速。破甲和单体高伤更合适。"
+  },
+  {
+    "id": "E007",
+    "name": "偷海鲜猫",
+    "hp": 58,
+    "speed": 76,
+    "armor": 0,
+    "gold": 2,
+    "radius": 20,
+    "air": false,
+    "tags": [
+      "thief"
+    ],
+    "ability": "碰到料理区后不扣灯火，叼走星级最低的一只海鲜并离场。场上没有海鲜时改为扣 1 点灯火。"
+  },
+  {
+    "id": "E008",
+    "name": "水母怪",
+    "hp": 52,
+    "speed": 40,
+    "armor": 0,
+    "gold": 2,
+    "radius": 20,
+    "air": false,
+    "tags": [
+      "stun"
+    ],
+    "ability": "每 4 秒麻痹最近的料理单位 1.1 秒。自身不飞行。"
+  },
+  {
+    "id": "E009",
+    "name": "章鱼怪",
+    "hp": 120,
+    "speed": 34,
+    "armor": 2,
+    "gold": 3,
+    "radius": 26,
+    "air": false,
+    "tags": [
+      "lock"
+    ],
+    "ability": "每 6 秒锁住一个有海鲜的料理位 3 秒，该单位不能攻击也不能被换位。"
+  },
+  {
+    "id": "E010",
+    "name": "泡沫箱怪",
+    "hp": 74,
+    "speed": 38,
+    "armor": 0,
+    "gold": 2,
+    "radius": 24,
+    "air": false,
+    "tags": [
+      "splitter"
+    ],
+    "ability": "死亡时放出 3 只泡沫鼠（生命 16，速度 90，半径 12）。"
+  },
+  {
+    "id": "E011",
+    "name": "厨师鼠",
+    "hp": 64,
+    "speed": 44,
+    "armor": 0,
+    "gold": 2,
+    "radius": 20,
+    "air": false,
+    "tags": [
+      "buffer"
+    ],
+    "ability": "光环半径 90：友军速度 ×1.15，并获得 10 点临时护盾。"
+  },
+  {
+    "id": "E012",
+    "name": "纸船仔",
+    "hp": 48,
+    "speed": 56,
+    "armor": 0,
+    "gold": 2,
+    "radius": 18,
+    "air": false,
+    "tags": [
+      "stable"
+    ],
+    "ability": "免疫击退。可以正常被减速和冻结。"
+  }
+]

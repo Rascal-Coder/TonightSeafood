@@ -1,0 +1,16 @@
+---
+description: Cocos MCP 已连接时，编辑器操作优先走 MCP
+alwaysApply: true
+---
+
+# 优先使用 Cocos MCP
+
+本项目扩展在 `extensions/cocos-mcp-server`。Cursor 服务名是 `cocos-creator`，地址 `http://127.0.0.1:3000/mcp`。
+
+改场景、节点、组件、预制体、资源引用、编辑器控制台、预览或构建时，先看这个 MCP 是否已连接。已连接就用它的工具完成。
+
+玩法脚本和数值 JSON 直接改文件。MCP 没连上时说明服务器未启动，再退回改文件。
+
+## 示例
+
+用户要在当前场景加一个子弹节点：调用 MCP 的 `node_lifecycle`（`action: create`）。不要手改 `.scene` 或 `.prefab` 里的 `__id__`。

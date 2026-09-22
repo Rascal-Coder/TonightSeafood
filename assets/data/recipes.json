@@ -1,0 +1,131 @@
+[
+  {
+    "id": "C001",
+    "name": "蒜蓉",
+    "keyword": [
+      "持续伤害",
+      "爆香",
+      "连锁爆炸"
+    ],
+    "prefer": [
+      "shell",
+      "shrimp"
+    ],
+    "mods": {
+      "dotDamage": 3,
+      "dotInterval": 0.5,
+      "dotDuration": 2,
+      "explodeEveryHits": 4,
+      "explodeRadius": 48,
+      "explodeDamageMul": 0.4
+    },
+    "note": "命中挂香伤。同一目标每第 4 次命中爆香。"
+  },
+  {
+    "id": "C002",
+    "name": "麻辣",
+    "keyword": [
+      "攻速",
+      "连锁",
+      "灼烧"
+    ],
+    "prefer": [
+      "shrimp",
+      "octopus"
+    ],
+    "mods": {
+      "intervalMul": 0.85,
+      "chainEveryAttacks": 5,
+      "chainJumps": 2,
+      "chainDamageMul": [
+        0.7,
+        0.5
+      ],
+      "burnDps": 4,
+      "burnSec": 2
+    },
+    "note": "攻速提高。每 5 次攻击辣油弹跳。"
+  },
+  {
+    "id": "C003",
+    "name": "椒盐",
+    "keyword": [
+      "暴击",
+      "击退",
+      "破甲"
+    ],
+    "prefer": [
+      "crab",
+      "urchin"
+    ],
+    "mods": {
+      "critAdd": 0.12,
+      "critDamage": 1.9,
+      "armorShred": 0.2,
+      "shredSec": 3,
+      "knockbackAdd": 18
+    },
+    "note": "暴击时破甲并追加击退。"
+  },
+  {
+    "id": "C004",
+    "name": "炭烤",
+    "keyword": [
+      "高伤",
+      "灼烧",
+      "穿透"
+    ],
+    "prefer": [
+      "fish"
+    ],
+    "mods": {
+      "damageMul": 1.22,
+      "pierceAdd": 1,
+      "trailDpsMul": 0.25,
+      "trailSec": 2,
+      "trailWidth": 28
+    },
+    "note": "伤害提高，弹道留下燃烧路径。"
+  },
+  {
+    "id": "C005",
+    "name": "清蒸",
+    "keyword": [
+      "恢复",
+      "攻速",
+      "增益"
+    ],
+    "prefer": [
+      "scallop"
+    ],
+    "mods": {
+      "selfDamageMul": 0.85,
+      "pulseSec": 4,
+      "pulseRadius": 90,
+      "allyIntervalMul": 0.85,
+      "buffSec": 3
+    },
+    "note": "自身伤害降低，周期性加快附近友军攻速。"
+  },
+  {
+    "id": "C006",
+    "name": "冰鲜",
+    "keyword": [
+      "减速",
+      "冻结",
+      "控制"
+    ],
+    "prefer": [
+      "squid",
+      "shell"
+    ],
+    "mods": {
+      "damageMul": 0.9,
+      "slowPct": 0.35,
+      "slowSec": 1.2,
+      "freezeAtStacks": 4,
+      "freezeSec": 0.8
+    },
+    "note": "攻击减速。冰层叠到 4 层冻结。"
+  }
+]

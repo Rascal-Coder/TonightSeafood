@@ -1,0 +1,602 @@
+[
+  {
+    "id": "B001",
+    "kind": "upgrade",
+    "name": "爆蒜",
+    "rarity": "common"
+  },
+  {
+    "id": "B002",
+    "kind": "upgrade",
+    "name": "海鲜快手",
+    "rarity": "common"
+  },
+  {
+    "id": "B003",
+    "kind": "upgrade",
+    "name": "厚网",
+    "rarity": "common"
+  },
+  {
+    "id": "B004",
+    "kind": "upgrade",
+    "name": "多带一筐",
+    "rarity": "common"
+  },
+  {
+    "id": "B005",
+    "kind": "upgrade",
+    "name": "捞回来",
+    "rarity": "common"
+  },
+  {
+    "id": "B006",
+    "kind": "upgrade",
+    "name": "深网",
+    "rarity": "common"
+  },
+  {
+    "id": "B007",
+    "kind": "upgrade",
+    "name": "辣油弹射",
+    "rarity": "common"
+  },
+  {
+    "id": "B008",
+    "kind": "upgrade",
+    "name": "薄冰",
+    "rarity": "common"
+  },
+  {
+    "id": "B009",
+    "kind": "upgrade",
+    "name": "重钳",
+    "rarity": "common"
+  },
+  {
+    "id": "B010",
+    "kind": "upgrade",
+    "name": "珍珠溅射",
+    "rarity": "common"
+  },
+  {
+    "id": "B011",
+    "kind": "upgrade",
+    "name": "扇贝开口",
+    "rarity": "common"
+  },
+  {
+    "id": "B012",
+    "kind": "upgrade",
+    "name": "多一只触手",
+    "rarity": "common"
+  },
+  {
+    "id": "B013",
+    "kind": "upgrade",
+    "name": "鱼骨利刃",
+    "rarity": "common"
+  },
+  {
+    "id": "B014",
+    "kind": "upgrade",
+    "name": "胆刺加密",
+    "rarity": "common"
+  },
+  {
+    "id": "B015",
+    "kind": "upgrade",
+    "name": "快捞",
+    "rarity": "common"
+  },
+  {
+    "id": "B016",
+    "kind": "upgrade",
+    "name": "稳手",
+    "rarity": "common"
+  },
+  {
+    "id": "B017",
+    "kind": "upgrade",
+    "name": "旺灯",
+    "rarity": "common"
+  },
+  {
+    "id": "B018",
+    "kind": "upgrade",
+    "name": "小费",
+    "rarity": "common"
+  },
+  {
+    "id": "B019",
+    "kind": "upgrade",
+    "name": "活水",
+    "rarity": "common"
+  },
+  {
+    "id": "B020",
+    "kind": "upgrade",
+    "name": "蒸汽久留",
+    "rarity": "common"
+  },
+  {
+    "id": "B021",
+    "kind": "upgrade",
+    "name": "炭火旺",
+    "rarity": "common"
+  },
+  {
+    "id": "B022",
+    "kind": "upgrade",
+    "name": "椒盐脆",
+    "rarity": "common"
+  },
+  {
+    "id": "B023",
+    "kind": "upgrade",
+    "name": "蒜香残留",
+    "rarity": "common"
+  },
+  {
+    "id": "B024",
+    "kind": "upgrade",
+    "name": "墨圈扩大",
+    "rarity": "common"
+  },
+  {
+    "id": "B025",
+    "kind": "upgrade",
+    "name": "铁盘护位",
+    "rarity": "common"
+  },
+  {
+    "id": "B026",
+    "kind": "upgrade",
+    "name": "后厨长筷",
+    "rarity": "common"
+  },
+  {
+    "id": "B027",
+    "kind": "upgrade",
+    "name": "邻里帮厨",
+    "rarity": "common"
+  },
+  {
+    "id": "B028",
+    "kind": "upgrade",
+    "name": "双响",
+    "rarity": "common"
+  },
+  {
+    "id": "B029",
+    "kind": "upgrade",
+    "name": "小骨奖",
+    "rarity": "common"
+  },
+  {
+    "id": "B030",
+    "kind": "upgrade",
+    "name": "夜市加单",
+    "rarity": "common"
+  },
+  {
+    "id": "B031",
+    "kind": "upgrade",
+    "name": "麻辣连锅",
+    "rarity": "rare"
+  },
+  {
+    "id": "B032",
+    "kind": "upgrade",
+    "name": "结冰",
+    "rarity": "rare"
+  },
+  {
+    "id": "B033",
+    "kind": "upgrade",
+    "name": "火焰水路",
+    "rarity": "rare"
+  },
+  {
+    "id": "B034",
+    "kind": "upgrade",
+    "name": "鲜味共鸣",
+    "rarity": "rare"
+  },
+  {
+    "id": "B035",
+    "kind": "upgrade",
+    "name": "黄金眼",
+    "rarity": "rare"
+  },
+  {
+    "id": "B036",
+    "kind": "upgrade",
+    "name": "一网三鲜",
+    "rarity": "rare"
+  },
+  {
+    "id": "B037",
+    "kind": "upgrade",
+    "name": "拼盘师傅",
+    "rarity": "rare"
+  },
+  {
+    "id": "B038",
+    "kind": "upgrade",
+    "name": "破壳",
+    "rarity": "rare"
+  },
+  {
+    "id": "B039",
+    "kind": "upgrade",
+    "name": "防空夹",
+    "rarity": "rare"
+  },
+  {
+    "id": "B040",
+    "kind": "upgrade",
+    "name": "猫怕热",
+    "rarity": "rare"
+  },
+  {
+    "id": "B041",
+    "kind": "upgrade",
+    "name": "连珠",
+    "rarity": "rare"
+  },
+  {
+    "id": "B042",
+    "kind": "upgrade",
+    "name": "加一只盘",
+    "rarity": "rare"
+  },
+  {
+    "id": "B043",
+    "kind": "upgrade",
+    "name": "回锅",
+    "rarity": "rare"
+  },
+  {
+    "id": "B044",
+    "kind": "upgrade",
+    "name": "慢火",
+    "rarity": "rare"
+  },
+  {
+    "id": "B045",
+    "kind": "upgrade",
+    "name": "赶场",
+    "rarity": "rare"
+  },
+  {
+    "id": "B046",
+    "kind": "upgrade",
+    "name": "地狱小灶",
+    "rarity": "epic"
+  },
+  {
+    "id": "B047",
+    "kind": "upgrade",
+    "name": "冰海",
+    "rarity": "epic"
+  },
+  {
+    "id": "B048",
+    "kind": "upgrade",
+    "name": "蟹阵",
+    "rarity": "epic"
+  },
+  {
+    "id": "B049",
+    "kind": "upgrade",
+    "name": "龙鱼斩",
+    "rarity": "epic"
+  },
+  {
+    "id": "B050",
+    "kind": "upgrade",
+    "name": "千手",
+    "rarity": "epic"
+  },
+  {
+    "id": "B051",
+    "kind": "upgrade",
+    "name": "爆炒",
+    "rarity": "epic"
+  },
+  {
+    "id": "B052",
+    "kind": "upgrade",
+    "name": "深海菜单",
+    "rarity": "epic"
+  },
+  {
+    "id": "B053",
+    "kind": "upgrade",
+    "name": "摊位扩建",
+    "rarity": "epic"
+  },
+  {
+    "id": "B054",
+    "kind": "upgrade",
+    "name": "一网打尽",
+    "rarity": "legendary"
+  },
+  {
+    "id": "B055",
+    "kind": "upgrade",
+    "name": "满汉全席",
+    "rarity": "legendary"
+  },
+  {
+    "id": "B056",
+    "kind": "upgrade",
+    "name": "夜市烟火",
+    "rarity": "legendary"
+  },
+  {
+    "id": "B057",
+    "kind": "upgrade",
+    "name": "围裙续灯",
+    "rarity": "legendary"
+  },
+  {
+    "id": "E001",
+    "kind": "enemy",
+    "name": "偷吃鼠",
+    "rarity": "normal"
+  },
+  {
+    "id": "E002",
+    "kind": "enemy",
+    "name": "快跑鼠",
+    "rarity": "normal"
+  },
+  {
+    "id": "E003",
+    "kind": "enemy",
+    "name": "铁桶鼠",
+    "rarity": "normal"
+  },
+  {
+    "id": "E004",
+    "kind": "enemy",
+    "name": "醉猫",
+    "rarity": "normal"
+  },
+  {
+    "id": "E005",
+    "kind": "enemy",
+    "name": "海鸥",
+    "rarity": "normal"
+  },
+  {
+    "id": "E006",
+    "kind": "enemy",
+    "name": "寄居蟹",
+    "rarity": "normal"
+  },
+  {
+    "id": "E007",
+    "kind": "enemy",
+    "name": "偷海鲜猫",
+    "rarity": "normal"
+  },
+  {
+    "id": "E008",
+    "kind": "enemy",
+    "name": "水母怪",
+    "rarity": "normal"
+  },
+  {
+    "id": "E009",
+    "kind": "enemy",
+    "name": "章鱼怪",
+    "rarity": "normal"
+  },
+  {
+    "id": "E010",
+    "kind": "enemy",
+    "name": "泡沫箱怪",
+    "rarity": "normal"
+  },
+  {
+    "id": "E011",
+    "kind": "enemy",
+    "name": "厨师鼠",
+    "rarity": "normal"
+  },
+  {
+    "id": "E012",
+    "kind": "enemy",
+    "name": "纸船仔",
+    "rarity": "normal"
+  },
+  {
+    "id": "L001",
+    "kind": "elite",
+    "name": "铁桶头目",
+    "rarity": "elite"
+  },
+  {
+    "id": "L002",
+    "kind": "elite",
+    "name": "海鸥领班",
+    "rarity": "elite"
+  },
+  {
+    "id": "L003",
+    "kind": "elite",
+    "name": "抗冻水母",
+    "rarity": "elite"
+  },
+  {
+    "id": "L004",
+    "kind": "elite",
+    "name": "散群沙丁",
+    "rarity": "elite"
+  },
+  {
+    "id": "S001",
+    "kind": "boss",
+    "name": "垃圾桶鼠王",
+    "rarity": "boss"
+  },
+  {
+    "id": "S002",
+    "kind": "boss",
+    "name": "海鸥船长",
+    "rarity": "boss"
+  },
+  {
+    "id": "S003",
+    "kind": "boss",
+    "name": "巨型寄居蟹",
+    "rarity": "boss"
+  },
+  {
+    "id": "S004",
+    "kind": "boss",
+    "name": "深海章鱼",
+    "rarity": "boss"
+  },
+  {
+    "id": "S005",
+    "kind": "boss",
+    "name": "蟹老板",
+    "rarity": "boss"
+  },
+  {
+    "id": "R001",
+    "kind": "seasoning",
+    "name": "蒜瓣",
+    "rarity": "relic"
+  },
+  {
+    "id": "R002",
+    "kind": "seasoning",
+    "name": "辣椒",
+    "rarity": "relic"
+  },
+  {
+    "id": "R003",
+    "kind": "seasoning",
+    "name": "花椒",
+    "rarity": "relic"
+  },
+  {
+    "id": "R004",
+    "kind": "seasoning",
+    "name": "柠檬",
+    "rarity": "relic"
+  },
+  {
+    "id": "R005",
+    "kind": "seasoning",
+    "name": "酱油",
+    "rarity": "relic"
+  },
+  {
+    "id": "R006",
+    "kind": "seasoning",
+    "name": "芥末",
+    "rarity": "relic"
+  },
+  {
+    "id": "R007",
+    "kind": "seasoning",
+    "name": "胡椒",
+    "rarity": "relic"
+  },
+  {
+    "id": "R008",
+    "kind": "seasoning",
+    "name": "葱花",
+    "rarity": "relic"
+  },
+  {
+    "id": "R009",
+    "kind": "seasoning",
+    "name": "黄油",
+    "rarity": "relic"
+  },
+  {
+    "id": "R010",
+    "kind": "seasoning",
+    "name": "冰块",
+    "rarity": "relic"
+  },
+  {
+    "id": "R011",
+    "kind": "seasoning",
+    "name": "木炭",
+    "rarity": "relic"
+  },
+  {
+    "id": "R012",
+    "kind": "seasoning",
+    "name": "海盐",
+    "rarity": "relic"
+  },
+  {
+    "id": "C001",
+    "kind": "recipe",
+    "name": "蒜蓉",
+    "rarity": "style"
+  },
+  {
+    "id": "C002",
+    "kind": "recipe",
+    "name": "麻辣",
+    "rarity": "style"
+  },
+  {
+    "id": "C003",
+    "kind": "recipe",
+    "name": "椒盐",
+    "rarity": "style"
+  },
+  {
+    "id": "C004",
+    "kind": "recipe",
+    "name": "炭烤",
+    "rarity": "style"
+  },
+  {
+    "id": "C005",
+    "kind": "recipe",
+    "name": "清蒸",
+    "rarity": "style"
+  },
+  {
+    "id": "C006",
+    "kind": "recipe",
+    "name": "冰鲜",
+    "rarity": "style"
+  },
+  {
+    "id": "X001",
+    "kind": "screenSkill",
+    "name": "地狱辣油",
+    "rarity": "legendary"
+  },
+  {
+    "id": "X002",
+    "kind": "screenSkill",
+    "name": "冰海覆盖",
+    "rarity": "legendary"
+  },
+  {
+    "id": "X003",
+    "kind": "screenSkill",
+    "name": "炭火幕",
+    "rarity": "legendary"
+  },
+  {
+    "id": "X004",
+    "kind": "screenSkill",
+    "name": "爆蒜雨",
+    "rarity": "legendary"
+  }
+]

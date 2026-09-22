@@ -1,0 +1,263 @@
+{
+  "version": "0.1.0",
+  "design": {
+    "width": 750,
+    "height": 1334,
+    "policy": "FIXED_WIDTH"
+  },
+  "tick": {
+    "logicHz": 20,
+    "logicDt": 0.05,
+    "visualFps": 60,
+    "spatialCell": 64
+  },
+  "lantern": {
+    "max": 20,
+    "leakDamage": 1,
+    "bossLeakDamage": 3,
+    "eliteLeakDamage": 2
+  },
+  "leakDistance": 600,
+  "layout": {
+    "origin": "Cocos 左下角为原点，y 向上。敌人从高 y 走向低 y。",
+    "topBar": {
+      "x": 0,
+      "y": 1234,
+      "w": 750,
+      "h": 100
+    },
+    "enemyGate": {
+      "x": 0,
+      "y": 1014,
+      "w": 750,
+      "h": 220
+    },
+    "battleZone": {
+      "x": 0,
+      "y": 414,
+      "w": 750,
+      "h": 600
+    },
+    "recipeBar": {
+      "x": 0,
+      "y": 334,
+      "w": 750,
+      "h": 80
+    },
+    "pond": {
+      "x": 40,
+      "y": 75,
+      "w": 670,
+      "h": 210
+    },
+    "spawnLineY": 1014,
+    "leakLineY": 414,
+    "slots": [
+      {
+        "id": "f0",
+        "row": "front",
+        "x": 270,
+        "y": 690,
+        "openAtSlotCount": 6
+      },
+      {
+        "id": "f1",
+        "row": "front",
+        "x": 170,
+        "y": 820,
+        "openAtSlotCount": 5
+      },
+      {
+        "id": "f2",
+        "row": "front",
+        "x": 375,
+        "y": 820,
+        "openAtSlotCount": 5
+      },
+      {
+        "id": "f3",
+        "row": "front",
+        "x": 580,
+        "y": 820,
+        "openAtSlotCount": 5
+      },
+      {
+        "id": "b0",
+        "row": "back",
+        "x": 480,
+        "y": 690,
+        "openAtSlotCount": 7
+      },
+      {
+        "id": "b1",
+        "row": "back",
+        "x": 200,
+        "y": 560,
+        "openAtSlotCount": 5
+      },
+      {
+        "id": "b2",
+        "row": "back",
+        "x": 550,
+        "y": 560,
+        "openAtSlotCount": 5
+      },
+      {
+        "id": "b3",
+        "row": "back",
+        "x": 375,
+        "y": 490,
+        "openAtSlotCount": 8
+      }
+    ]
+  },
+  "pond": {
+    "capacity": 10,
+    "initialCount": 6,
+    "spawnIntervalMin": 2.2,
+    "spawnIntervalMax": 3.6,
+    "maxSpeed": 28,
+    "separateRadius": 36,
+    "bobAmplitude": 4,
+    "bobPeriod": 1.6
+  },
+  "net": {
+    "capacity": 2,
+    "radius": 78,
+    "cooldown": 0.4,
+    "followLerp": 18,
+    "maxCapacity": 4
+  },
+  "slots": {
+    "initial": 5,
+    "max": 8,
+    "snapRadius": 52
+  },
+  "merge": {
+    "maxStar": 5,
+    "fieldRule": "sameSpeciesSameStar",
+    "scoopRule": "maxStar + count - 1"
+  },
+  "growth": {
+    "starDamage": 1.62,
+    "starInterval": 0.94,
+    "starRangeAdd": 8
+  },
+  "combat": {
+    "openingGraceSeconds": 6,
+    "critDamageDefault": 1.5,
+    "hitStopMs": {
+      "normal": 0,
+      "heavy": 40,
+      "boss": 120
+    },
+    "armorFormula": "max(1, hit - armor)",
+    "dotArmorFactor": 0.5
+  },
+  "economy": {
+    "fishbonePerWave": 2,
+    "fishbonePerBoss": 8,
+    "goldWaveGrowth": 0.08
+  },
+  "formulas": {
+    "hpMult": "1 + (wave-1)*0.16 + floor((wave-1)/6)*0.22",
+    "speedMult": "1 + (wave-1)*0.012",
+    "starDamage": "round(baseDamage * 1.62^(star-1))",
+    "starInterval": "baseInterval * 0.94^(star-1)",
+    "gold": "round(baseGold * (1 + (wave-1)*0.08))",
+    "armorHit": "max(1, rawDamage - armor)",
+    "armorDot": "max(1, rawDamage - armor * 0.5)"
+  },
+  "counterRules": [
+    {
+      "if": "meleeRatio > 0.7",
+      "then": "E005 weight +40%",
+      "cap": "单波飞行单位数量不超过该波总刷新数的 40%"
+    },
+    {
+      "if": "iceFreezeCountInLast20s > 12",
+      "then": "L003 / 抗冻权重 +30%",
+      "cap": "抗冻单位不超过 40%"
+    },
+    {
+      "if": "pierceKillsRatio > 0.55",
+      "then": "L004 权重 +30%",
+      "cap": "分裂单位不超过 40%"
+    },
+    {
+      "if": "averageStar >= 3 && slotUsed >= 5",
+      "then": "E007 权重 +25%",
+      "cap": "小偷不超过 2 只同时在场"
+    }
+  ],
+  "specialPond": [
+    {
+      "id": "gold",
+      "name": "黄金海鲜",
+      "chance": 0.02,
+      "rule": "需要 B006 或之后的黄金眼。捞起后星级视为 2，并掉落双倍金币。"
+    },
+    {
+      "id": "mutant",
+      "name": "变异海鲜",
+      "chance": 0.015,
+      "rule": "随机一个非当前种类。合成时星级 +1 的效率额外 +1，最高仍为 5。"
+    },
+    {
+      "id": "seasoned",
+      "name": "带调料海鲜",
+      "chance": 0.04,
+      "rule": "部署时自带 1 个随机料理，不跟随当前灶火。"
+    },
+    {
+      "id": "frozen",
+      "name": "冰冻海鲜",
+      "chance": 0.02,
+      "rule": "部署后前 8 秒攻击自带冰鲜减速，即使料理不是冰鲜。"
+    },
+    {
+      "id": "chest",
+      "name": "宝箱贝",
+      "chance": 0.01,
+      "rule": "不参与战斗。放入料理位后立即裂开，给出一次三选一，并空出该位置。"
+    }
+  ],
+  "signatures": [
+    {
+      "recipe": "C001",
+      "species": "oyster",
+      "skill": "蒜香爆汁",
+      "rule": "命中时爆炸半径 70，伤害为该次命中的 55%。取代普通爆香。"
+    },
+    {
+      "recipe": "C002",
+      "species": "shrimp",
+      "skill": "麻辣连弹",
+      "rule": "每 5 次攻击辣油跳 3 次，伤害系数 0.70 / 0.50 / 0.35。"
+    },
+    {
+      "recipe": "C003",
+      "species": "crab",
+      "skill": "椒盐重钳",
+      "rule": "暴击击退再乘 1.8，并硬直 0.25 秒。"
+    },
+    {
+      "recipe": "C006",
+      "species": "squid",
+      "skill": "冰墨",
+      "rule": "墨圈半径 64。敌人在墨圈内停留 0.6 秒后冻结 0.9 秒。"
+    },
+    {
+      "recipe": "C004",
+      "species": "fish",
+      "skill": "火焰水刃",
+      "rule": "水刃路径留下 4 点/秒灼烧，持续 2.5 秒，路径宽 36。"
+    },
+    {
+      "recipe": "C005",
+      "species": "scallop",
+      "skill": "鲜味蒸汽",
+      "rule": "每 5 秒给扇形内友军 +20% 伤害，持续 4 秒。"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "purpose": "第一版可玩闭环用的内容开关。正式 18 波仍读 waves.json，本文件只裁剪 Demo 出场。",
+  "enabledSpecies": ["shrimp", "crab", "scallop", "fish"],
+  "enabledEnemies": ["E001", "E002", "E005"],
+  "bossId": "S001",
+  "playWaves": [1, 2, 3, 4, 5],
+  "appendBossAfter": true,
+  "bossHpScale": 0.16,
+  "recipesOffered": ["C001", "C002"],
+  "draftIds": ["B002", "B003", "B009"],
+  "vendorId": "vendor_lang"
+}

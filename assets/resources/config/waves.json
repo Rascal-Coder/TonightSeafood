@@ -1,0 +1,409 @@
+{
+  "map": "night_stall",
+  "boss": "S001",
+  "targetCombatSec": 612,
+  "waves": [
+    {
+      "wave": 1,
+      "duration": 18,
+      "hpMult": 1,
+      "speedMult": 1,
+      "groups": [
+        {
+          "id": "E001",
+          "count": 6
+        }
+      ],
+      "event": {
+        "type": "tutorial",
+        "step": "scoop"
+      }
+    },
+    {
+      "wave": 2,
+      "duration": 22,
+      "hpMult": 1.16,
+      "speedMult": 1.012,
+      "groups": [
+        {
+          "id": "E001",
+          "count": 5
+        },
+        {
+          "id": "E002",
+          "count": 3
+        }
+      ],
+      "event": {
+        "type": "tutorial",
+        "step": "merge"
+      }
+    },
+    {
+      "wave": 3,
+      "duration": 24,
+      "hpMult": 1.32,
+      "speedMult": 1.024,
+      "groups": [
+        {
+          "id": "E001",
+          "count": 6
+        },
+        {
+          "id": "E002",
+          "count": 4
+        }
+      ],
+      "event": {
+        "type": "draft",
+        "count": 3,
+        "pool": "common"
+      }
+    },
+    {
+      "wave": 4,
+      "duration": 28,
+      "hpMult": 1.48,
+      "speedMult": 1.036,
+      "groups": [
+        {
+          "id": "E001",
+          "count": 4
+        },
+        {
+          "id": "E003",
+          "count": 2
+        },
+        {
+          "id": "E002",
+          "count": 3
+        }
+      ],
+      "event": {
+        "type": "recipeOffer",
+        "options": [
+          "C001",
+          "C002"
+        ]
+      }
+    },
+    {
+      "wave": 5,
+      "duration": 30,
+      "hpMult": 1.64,
+      "speedMult": 1.048,
+      "groups": [
+        {
+          "id": "E005",
+          "count": 4
+        },
+        {
+          "id": "E001",
+          "count": 6
+        }
+      ],
+      "event": {
+        "type": "newSpecies",
+        "species": "scallop"
+      }
+    },
+    {
+      "wave": 6,
+      "duration": 32,
+      "hpMult": 1.8,
+      "speedMult": 1.06,
+      "groups": [
+        {
+          "id": "E004",
+          "count": 2
+        },
+        {
+          "id": "E002",
+          "count": 5
+        },
+        {
+          "id": "E003",
+          "count": 2
+        }
+      ],
+      "event": {
+        "type": "draft",
+        "count": 3,
+        "pool": "commonRare"
+      }
+    },
+    {
+      "wave": 7,
+      "duration": 36,
+      "hpMult": 2.18,
+      "speedMult": 1.072,
+      "groups": [
+        {
+          "id": "L001",
+          "count": 1
+        },
+        {
+          "id": "E001",
+          "count": 8
+        }
+      ],
+      "event": {
+        "type": "elite"
+      }
+    },
+    {
+      "wave": 8,
+      "duration": 34,
+      "hpMult": 2.34,
+      "speedMult": 1.084,
+      "groups": [
+        {
+          "id": "E006",
+          "count": 2
+        },
+        {
+          "id": "E005",
+          "count": 4
+        },
+        {
+          "id": "E002",
+          "count": 4
+        }
+      ],
+      "event": {
+        "type": "newSpecies",
+        "species": "fish"
+      }
+    },
+    {
+      "wave": 9,
+      "duration": 34,
+      "hpMult": 2.5,
+      "speedMult": 1.096,
+      "groups": [
+        {
+          "id": "E007",
+          "count": 2
+        },
+        {
+          "id": "E001",
+          "count": 6
+        },
+        {
+          "id": "E012",
+          "count": 3
+        }
+      ],
+      "event": {
+        "type": "draft",
+        "count": 3,
+        "pool": "rare"
+      }
+    },
+    {
+      "wave": 10,
+      "duration": 34,
+      "hpMult": 2.66,
+      "speedMult": 1.108,
+      "groups": [
+        {
+          "id": "E008",
+          "count": 3
+        },
+        {
+          "id": "E004",
+          "count": 2
+        },
+        {
+          "id": "E002",
+          "count": 4
+        }
+      ],
+      "event": {
+        "type": "counterShift"
+      }
+    },
+    {
+      "wave": 11,
+      "duration": 34,
+      "hpMult": 2.82,
+      "speedMult": 1.12,
+      "groups": [
+        {
+          "id": "E010",
+          "count": 2
+        },
+        {
+          "id": "E011",
+          "count": 2
+        },
+        {
+          "id": "E001",
+          "count": 6
+        }
+      ],
+      "event": {
+        "type": "seasoningOffer"
+      }
+    },
+    {
+      "wave": 12,
+      "duration": 34,
+      "hpMult": 2.98,
+      "speedMult": 1.132,
+      "groups": [
+        {
+          "id": "E009",
+          "count": 2
+        },
+        {
+          "id": "E006",
+          "count": 2
+        },
+        {
+          "id": "E005",
+          "count": 4
+        }
+      ],
+      "event": {
+        "type": "draft",
+        "count": 3,
+        "pool": "rareEpic"
+      }
+    },
+    {
+      "wave": 13,
+      "duration": 38,
+      "hpMult": 3.36,
+      "speedMult": 1.144,
+      "groups": [
+        {
+          "id": "L002",
+          "count": 1
+        },
+        {
+          "id": "E005",
+          "count": 6
+        }
+      ],
+      "event": {
+        "type": "elite"
+      }
+    },
+    {
+      "wave": 14,
+      "duration": 36,
+      "hpMult": 3.52,
+      "speedMult": 1.156,
+      "groups": [
+        {
+          "id": "E007",
+          "count": 3
+        },
+        {
+          "id": "E010",
+          "count": 2
+        },
+        {
+          "id": "E003",
+          "count": 3
+        }
+      ],
+      "event": {
+        "type": "counterShift"
+      }
+    },
+    {
+      "wave": 15,
+      "duration": 36,
+      "hpMult": 3.68,
+      "speedMult": 1.168,
+      "groups": [
+        {
+          "id": "L003",
+          "count": 1
+        },
+        {
+          "id": "E008",
+          "count": 3
+        },
+        {
+          "id": "E002",
+          "count": 6
+        }
+      ],
+      "event": {
+        "type": "draft",
+        "count": 3,
+        "pool": "epic"
+      }
+    },
+    {
+      "wave": 16,
+      "duration": 36,
+      "hpMult": 3.84,
+      "speedMult": 1.18,
+      "groups": [
+        {
+          "id": "L004",
+          "count": 1
+        },
+        {
+          "id": "E012",
+          "count": 4
+        },
+        {
+          "id": "E006",
+          "count": 2
+        }
+      ],
+      "event": {
+        "type": "pressure"
+      }
+    },
+    {
+      "wave": 17,
+      "duration": 36,
+      "hpMult": 4,
+      "speedMult": 1.192,
+      "groups": [
+        {
+          "id": "E009",
+          "count": 2
+        },
+        {
+          "id": "E011",
+          "count": 2
+        },
+        {
+          "id": "E004",
+          "count": 3
+        },
+        {
+          "id": "E007",
+          "count": 2
+        }
+      ],
+      "event": {
+        "type": "draft",
+        "count": 3,
+        "pool": "epicLegendary"
+      }
+    },
+    {
+      "wave": 18,
+      "duration": 70,
+      "hpMult": 4.16,
+      "speedMult": 1.204,
+      "groups": [
+        {
+          "id": "S001",
+          "count": 1
+        }
+      ],
+      "event": {
+        "type": "boss"
+      }
+    }
+  ]
+}
