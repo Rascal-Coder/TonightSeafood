@@ -1,0 +1,20 @@
+{
+  "map_mode": "scene_mode",
+  "visual_model": "layered_raster",
+  "camera": { "w": 750, "h": 1334, "scroll": false },
+  "origin": "Cocos 左下角为原点，y 向上",
+  "layout_source": "assets/data/balance.json#layout",
+  "layers": [
+    { "id": "base", "file": "bg_night_stall.png", "x": 0, "y": 0, "w": 750, "h": 1334 },
+    { "id": "pond_water", "file": "pond_water.png", "x": 70, "y": 90, "w": 612, "h": 160 },
+    { "id": "pond_caustic", "file": "pond_caustic.png", "tile": true, "over": "pond_water" },
+    {
+      "id": "pot",
+      "file": "stall_pot.png",
+      "anchor": "bottom-center",
+      "x": 375,
+      "y": 414,
+      "displayWidth": 160
+    }
+  ]
+}

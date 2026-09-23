@@ -486,7 +486,7 @@ const layout = {
   enemyGate: { x: 0, y: 1014, w: 750, h: 220 },
   battleZone: { x: 0, y: 414, w: 750, h: 600 },
   recipeBar: { x: 0, y: 334, w: 750, h: 80 },
-  pond: { x: 40, y: 75, w: 670, h: 210 },
+  pond: { x: 70, y: 90, w: 612, h: 160 },
   spawnLineY: 1014,
   leakLineY: 414,
   lanes: [

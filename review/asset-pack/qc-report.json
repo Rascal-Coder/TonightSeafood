@@ -1,6 +1,6 @@
 {
-  "asset_count": 30,
-  "passed": true,
+  "asset_count": 31,
+  "passed": false,
   "assets": [
     {
       "path": "maps/bg_night_stall.png",
@@ -13,7 +13,7 @@
         750,
         1334
       ],
-      "mode": "RGBA",
+      "mode": "RGB",
       "alpha_range": [
         255,
         255
@@ -26,13 +26,34 @@
     {
       "path": "maps/pond_water.png",
       "expected_size": [
-        750,
-        334
+        612,
+        160
       ],
       "exists": true,
       "actual_size": [
-        750,
-        334
+        612,
+        160
+      ],
+      "mode": "RGB",
+      "alpha_range": [
+        255,
+        255
+      ],
+      "has_transparency": false,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "maps/pond_caustic.png",
+      "expected_size": [
+        256,
+        256
+      ],
+      "exists": true,
+      "actual_size": [
+        256,
+        256
       ],
       "mode": "RGBA",
       "alpha_range": [
@@ -45,7 +66,7 @@
       "passed": true
     },
     {
-      "path": "maps/pond_caustic.png",
+      "path": "maps/stall_pot.png",
       "expected_size": [
         256,
         256
@@ -157,8 +178,8 @@
       ],
       "exists": true,
       "actual_size": [
-        256,
-        256
+        1254,
+        1254
       ],
       "mode": "RGBA",
       "alpha_range": [
@@ -166,9 +187,9 @@
         255
       ],
       "has_transparency": true,
-      "size_ok": true,
+      "size_ok": false,
       "nonempty": true,
-      "passed": true
+      "passed": false
     },
     {
       "path": "characters/seafood/crab_star2.png",
@@ -178,8 +199,8 @@
       ],
       "exists": true,
       "actual_size": [
-        256,
-        256
+        1254,
+        1254
       ],
       "mode": "RGBA",
       "alpha_range": [
@@ -187,9 +208,9 @@
         255
       ],
       "has_transparency": true,
-      "size_ok": true,
+      "size_ok": false,
       "nonempty": true,
-      "passed": true
+      "passed": false
     },
     {
       "path": "characters/seafood/scallop_star1.png",

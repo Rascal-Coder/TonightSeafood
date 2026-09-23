@@ -9,8 +9,9 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parents[1] / "asset-pack"
 EXPECTED = {
     "maps/bg_night_stall.png": (750, 1334),
-    "maps/pond_water.png": (750, 334),
+    "maps/pond_water.png": (612, 160),
     "maps/pond_caustic.png": (256, 256),
+    "maps/stall_pot.png": (256, 256),
     "characters/net/net.png": (256, 256),
     "characters/seafood/shrimp_star1.png": (256, 256),
     "characters/seafood/shrimp_star2.png": (256, 256),

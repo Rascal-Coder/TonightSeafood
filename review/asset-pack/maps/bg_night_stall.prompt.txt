@@ -1,0 +1,3 @@
+地基，竖屏 9:16，略带倾斜的俯视。画风锁：flat 2D Chinese casual-game sticker art, thick wobbly dark-brown ink outline, flat color blocks, one soft inner shadow, one small cream highlight, warm night-market colors, not 3D, not clay, not pixel art.
+
+布局稿只约束分区，不保留色块。从上到下：夜空与远海、两侧和栏杆上的暖黄灯泡、三路空地（只许浅色地面分道）、贴地灶台砖、木柜台沿、矩形空池（只有池沿和深色池底）、最底木边。不要桌子、凳子、铁板、箱子、植物、木桶、锅、火、人物、文字。
