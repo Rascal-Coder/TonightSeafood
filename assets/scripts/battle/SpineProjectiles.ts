@@ -1,6 +1,6 @@
 import { Node, sp } from "cc";
 import type { Shot } from "../core/battle-world";
-import { child } from "./BattlePainter";
+import { child, ink } from "./BattlePainter";
 
 /** Original S818TX31 Spine 3.8 animations, no conversion to still images. */
 export class SpineProjectiles {
@@ -34,12 +34,14 @@ export class SpineProjectiles {
         skeleton = this.pool.pop(); if (!skeleton) continue;
         skeleton.node.active = true;
         skeleton.setAnimation(0, shot.kind === "blade" ? "fly_10" : "fly_3", true);
+        skeleton.color = ink(shot.tint || "#ffffff");
         this.live.set(shot.uid, skeleton);
       }
       skeleton.paused = paused;
       skeleton.node.setPosition(shot.x, shot.y);
       skeleton.node.angle = Math.atan2(shot.vy, shot.vx) * 180 / Math.PI;
-      skeleton.node.setScale(shot.kind === "blade" ? 0.65 : 0.4, shot.kind === "blade" ? 0.65 : 0.4, 1);
+      const scale = (shot.kind === "blade" ? 0.65 : 0.4) * (shot.starScale || 1);
+      skeleton.node.setScale(scale, scale, 1);
     }
   }
 }

@@ -56,11 +56,14 @@ export class BattlePainter {
     if (label.string !== text) label.string = text;
     label.fontSize = size; label.lineHeight = size * 1.35; label.color = ink(color);
   }
-  sprite(frame: SpriteFrame, x: number, y: number, w: number, h = w, angle = 0, tint = "#ffffff"): void {
+  sprite(frame: SpriteFrame, x: number, y: number, w: number, h = w, angle = 0, tint = "#ffffff", opacity = 1): void {
     const s = this.images[this.si++]; if (!s || !frame) return;
     s.node.active = true; s.node.setPosition(x, y); s.node.angle = angle;
     s.node.getComponent(UITransform)!.setContentSize(w, h);
     if (s.spriteFrame !== frame) s.spriteFrame = frame;
-    s.color = ink(tint);
+    const base = ink(tint);
+    const color = s.color;
+    color.set(base.r, base.g, base.b, Math.round(base.a * Math.max(0, Math.min(1, opacity))));
+    s.color = color;
   }
 }

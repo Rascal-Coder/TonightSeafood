@@ -35,6 +35,7 @@ export class BattleDirector extends Component {
 
   async start(): Promise<void> {
     const oldBg = this.node.getChildByName("Background"); if (oldBg) oldBg.active = false;
+    const stall = this.node.getChildByName("StallLayers"); if (stall) stall.active = false;
     this.root = child("NightMarket", this.node);
     this.root.getComponent(UITransform)!.setAnchorPoint(0, 0);
     this.root.getComponent(UITransform)!.setContentSize(750, 1334);
@@ -51,7 +52,7 @@ export class BattleDirector extends Component {
       input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
       input.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
       input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
-      input.on(Input.EventType.TOUCH_CANCEL, this.cancel, this);
+      input.on(Input.EventType.TOUCH_CANCEL, this.onTouchCancel, this);
       input.on(Input.EventType.MOUSE_DOWN, this.onMouseDown, this);
       input.on(Input.EventType.MOUSE_MOVE, this.onMouseMove, this);
       input.on(Input.EventType.MOUSE_UP, this.onMouseUp, this);
@@ -90,6 +91,7 @@ export class BattleDirector extends Component {
   }
   private onTouchMove(e: EventTouch): void { if (e.getID() === this.touchId) { const p = e.getUILocation(); this.move(p.x, p.y); } }
   private onTouchEnd(e: EventTouch): void { if (e.getID() === this.touchId) { const p = e.getUILocation(); this.up(p.x, p.y); this.touchId = null; } }
+  private onTouchCancel(e: EventTouch): void { if (e.getID() === this.touchId) this.cancel(); }
   private onMouseDown(e: EventMouse): void { if (e.getButton() === 0) { const p = e.getUILocation(); this.down(p.x, p.y); } }
   private onMouseMove(e: EventMouse): void { const p = e.getUILocation(); this.move(p.x, p.y); }
   private onMouseUp(e: EventMouse): void { if (e.getButton() === 0) { const p = e.getUILocation(); this.up(p.x, p.y); } }
@@ -102,14 +104,24 @@ export class BattleDirector extends Component {
     const item = this.world.tray.find((t) => t.uid === trayUid);
     if (item) { this.drag = { kind: "tray", ...item, x: p.x, y: p.y }; return; }
     const unit = this.world.seafood.find((u) => Math.hypot(u.x - p.x, u.y + 20 - p.y) < 60);
-    if (unit) { this.drag = { kind: "unit", uid: unit.uid, speciesId: unit.speciesId, star: unit.star, x: p.x, y: p.y }; return; }
+    if (unit && this.world.beginUnitDrag(unit.uid)) {
+      this.drag = { kind: "unit", uid: unit.uid, speciesId: unit.speciesId, star: unit.star, x: p.x, y: p.y };
+      this.world.dragUnit(unit.uid, p.x, p.y);
+      return;
+    }
     if (p.y > 80 && p.y < 278 && p.x > 35 && p.x < 715) this.world.pointerDown(p.x, p.y);
   }
   private move(x: number, y: number): void {
     if (!this.held || !this.world) return;
     const p = this.point(x, y);
-    if (this.drag) { this.drag.x = p.x; this.drag.y = p.y; }
-    else this.world.pointerMove(Math.max(40, Math.min(710, p.x)), Math.max(85, Math.min(275, p.y)));
+    if (this.drag) {
+      this.drag.x = p.x; this.drag.y = p.y;
+      if (this.drag.kind === "unit" && this.world.dragUnit(this.drag.uid, p.x, p.y)) {
+        const unit = this.world.seafood.find((item) => item.uid === this.drag!.uid);
+        if (unit) { this.drag.x = unit.x; this.drag.y = unit.y; }
+      }
+    }
+    else this.world.pointerMove(p.x, p.y);
   }
   private up(x: number, y: number): void {
     if (!this.held || !this.world || !this.presentation) return;
@@ -122,9 +134,12 @@ export class BattleDirector extends Component {
       const trayTarget = this.presentation.trayAt(this.world, p.x, p.y);
       const ok = d.kind === "tray"
         ? (trayTarget !== null ? this.world.mergeTray(d.uid, trayTarget) : this.world.dropTray(d.uid, p.x, p.y))
-        : this.world.moveUnit(d.uid, p.x, p.y);
+        : this.world.endUnitDrag(d.uid, p.x, p.y);
       if (ok) this.sound?.play("pluck");
-      this.presentation.notify(ok ? "上菜！同种同星叠放可以升星" : "拖到圆盘上，再松手"); this.drag = null;
+      this.presentation.notify(ok
+        ? d.kind === "unit" ? "换路成功 · 拖动中也会继续攻击" : "上菜！同种同星叠放可以升星"
+        : d.kind === "unit" ? "离开料理位会弹回原位" : "拖到圆盘上，再松手");
+      this.drag = null;
     } else this.world.pointerUp(p.x, p.y);
   }
   private act(id: string): void {
@@ -149,12 +164,16 @@ export class BattleDirector extends Component {
     if (e.keyCode === KeyCode.SPACE && this.screen === "play") this.act("skill");
   }
   private onHide(): void { if (this.screen === "play" && this.world?.phase === "combat") this.act("pause"); }
-  private cancel(): void { this.held = false; this.pressed = null; this.drag = null; this.touchId = null; this.world?.cancelPointer(); }
+  private cancel(): void {
+    this.held = false; this.pressed = null; this.drag = null; this.touchId = null;
+    this.world?.cancelPointer();
+    this.world?.cancelUnitDrag();
+  }
   onDestroy(): void {
     input.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
     input.off(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
     input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
-    input.off(Input.EventType.TOUCH_CANCEL, this.cancel, this);
+    input.off(Input.EventType.TOUCH_CANCEL, this.onTouchCancel, this);
     input.off(Input.EventType.MOUSE_DOWN, this.onMouseDown, this);
     input.off(Input.EventType.MOUSE_MOVE, this.onMouseMove, this);
     input.off(Input.EventType.MOUSE_UP, this.onMouseUp, this);

@@ -32,7 +32,8 @@ const balance = {
     bobAmplitude: 4,
     bobPeriod: 1.6,
   },
-  net: { capacity: 2, radius: 78, cooldown: 0.4, followLerp: 18, maxCapacity: 4 },
+  net: { capacity: 2, radius: 78, cooldown: 0.4, followLerp: 18, maxCapacity: 4,
+    grazeCoverage: 0.08, captureCoverage: 0.42, bodyRadius: { shrimp: 24, crab: 28, scallop: 27, fish: 25 } },
   slots: { initial: 5, max: 8, snapRadius: 52 },
   merge: { maxStar: 5, fieldRule: "sameSpeciesSameStar", scoopRule: "maxStar + count - 1" },
   growth: { starDamage: 1.62, starInterval: 0.94, starRangeAdd: 8 },
@@ -42,6 +43,14 @@ const balance = {
     hitStopMs: { normal: 0, heavy: 40, boss: 120 },
     armorFormula: "max(1, hit - armor)",
     dotArmorFactor: 0.5,
+  },
+  feedback: {
+    attackSeconds: 0.24, anticipationSeconds: 0.14, hitSeconds: 0.18,
+    recoilPixels: 9, heavyRecoilPixels: 17, shakeSeconds: 0.18, shakePixels: 3,
+    crabFrameSeconds: 0.07,
+    idleFrameSeconds: 0.30, mergeSeconds: 0.75, catchSeconds: 0.38,
+    starColors: ["#f5ddb0", "#8fdfbd", "#77ccff", "#ce9bff", "#ffd26c"],
+    starFxScale: [1, 1.12, 1.3, 1.5, 1.75],
   },
   economy: {
     fishbonePerWave: 2,
@@ -480,6 +489,11 @@ const layout = {
   pond: { x: 40, y: 75, w: 670, h: 210 },
   spawnLineY: 1014,
   leakLineY: 414,
+  lanes: [
+    { id: "left", minX: 140, maxX: 270, centerX: 205 },
+    { id: "middle", minX: 300, maxX: 450, centerX: 375 },
+    { id: "right", minX: 480, maxX: 610, centerX: 545 },
+  ],
   slots: [
     { id: "f0", row: "front", x: 270, y: 690, openAtSlotCount: 6 },
     { id: "f1", row: "front", x: 170, y: 820, openAtSlotCount: 5 },
@@ -497,6 +511,7 @@ const write = (name, obj) => {
 };
 
 write("balance.json", {
+  feedback: balance.feedback,
   version: balance.version,
   design: balance.design,
   tick: balance.tick,

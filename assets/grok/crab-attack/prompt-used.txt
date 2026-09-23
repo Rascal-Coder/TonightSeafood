@@ -1,0 +1,5 @@
+Reference: assets/resources/art/crew-v2.png, turquoise crab at top middle.
+Six-frame double-claw attack, 2 rows x 3 columns. Neutral, compress/anticipate, raised wind-up, forward closing strike, closed-claw overshoot, neutral recovery.
+Match watercolor texture, dark warm outlines, cream belly, angry cute eyes. Fixed camera and anatomical body scale, stable feet, all appendages inside each cell, no effects, labels, borders, other characters. Solid #FF00FF key background.
+Processor: 256px cells, shared scale, fit 0.75, feet anchor, largest component, strict QC, 70ms GIF frames.
+Runtime: cooldown anticipation uses frames 2 and 3; attack event begins frame 4; recovery uses frames 5 and 6; idle is frame 1.

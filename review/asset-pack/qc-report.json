@@ -1,0 +1,636 @@
+{
+  "asset_count": 30,
+  "passed": true,
+  "assets": [
+    {
+      "path": "maps/bg_night_stall.png",
+      "expected_size": [
+        750,
+        1334
+      ],
+      "exists": true,
+      "actual_size": [
+        750,
+        1334
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        255,
+        255
+      ],
+      "has_transparency": false,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "maps/pond_water.png",
+      "expected_size": [
+        750,
+        334
+      ],
+      "exists": true,
+      "actual_size": [
+        750,
+        334
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "maps/pond_caustic.png",
+      "expected_size": [
+        256,
+        256
+      ],
+      "exists": true,
+      "actual_size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "characters/net/net.png",
+      "expected_size": [
+        256,
+        256
+      ],
+      "exists": true,
+      "actual_size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "characters/seafood/shrimp_star1.png",
+      "expected_size": [
+        256,
+        256
+      ],
+      "exists": true,
+      "actual_size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "characters/seafood/shrimp_star2.png",
+      "expected_size": [
+        256,
+        256
+      ],
+      "exists": true,
+      "actual_size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "characters/seafood/shrimp_star3.png",
+      "expected_size": [
+        256,
+        256
+      ],
+      "exists": true,
+      "actual_size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "characters/seafood/crab_star1.png",
+      "expected_size": [
+        256,
+        256
+      ],
+      "exists": true,
+      "actual_size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "characters/seafood/crab_star2.png",
+      "expected_size": [
+        256,
+        256
+      ],
+      "exists": true,
+      "actual_size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "characters/seafood/scallop_star1.png",
+      "expected_size": [
+        256,
+        256
+      ],
+      "exists": true,
+      "actual_size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "characters/seafood/fish_star1.png",
+      "expected_size": [
+        256,
+        256
+      ],
+      "exists": true,
+      "actual_size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "characters/enemies/enemy_e001.png",
+      "expected_size": [
+        256,
+        256
+      ],
+      "exists": true,
+      "actual_size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "characters/enemies/enemy_e002.png",
+      "expected_size": [
+        256,
+        256
+      ],
+      "exists": true,
+      "actual_size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "characters/enemies/enemy_e005.png",
+      "expected_size": [
+        256,
+        256
+      ],
+      "exists": true,
+      "actual_size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "characters/bosses/boss_s001.png",
+      "expected_size": [
+        512,
+        512
+      ],
+      "exists": true,
+      "actual_size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "projectiles/proj_pellet.png",
+      "expected_size": [
+        64,
+        64
+      ],
+      "exists": true,
+      "actual_size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "projectiles/proj_claw.png",
+      "expected_size": [
+        128,
+        128
+      ],
+      "exists": true,
+      "actual_size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "projectiles/proj_fan.png",
+      "expected_size": [
+        256,
+        128
+      ],
+      "exists": true,
+      "actual_size": [
+        256,
+        128
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "projectiles/proj_blade.png",
+      "expected_size": [
+        64,
+        256
+      ],
+      "exists": true,
+      "actual_size": [
+        64,
+        256
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "projectiles/proj_chili.png",
+      "expected_size": [
+        64,
+        64
+      ],
+      "exists": true,
+      "actual_size": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "ui/ui_wood_bar.png",
+      "expected_size": [
+        750,
+        100
+      ],
+      "exists": true,
+      "actual_size": [
+        750,
+        100
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "ui/ui_tray.png",
+      "expected_size": [
+        700,
+        160
+      ],
+      "exists": true,
+      "actual_size": [
+        700,
+        160
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "ui/ui_card.png",
+      "expected_size": [
+        200,
+        280
+      ],
+      "exists": true,
+      "actual_size": [
+        200,
+        280
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "ui/ui_btn.png",
+      "expected_size": [
+        160,
+        64
+      ],
+      "exists": true,
+      "actual_size": [
+        160,
+        64
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "ui/ui_lantern.png",
+      "expected_size": [
+        128,
+        128
+      ],
+      "exists": true,
+      "actual_size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "ui/ui_coin.png",
+      "expected_size": [
+        128,
+        128
+      ],
+      "exists": true,
+      "actual_size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "fx/fx_bubble.png",
+      "expected_size": [
+        128,
+        128
+      ],
+      "exists": true,
+      "actual_size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "fx/fx_merge.png",
+      "expected_size": [
+        128,
+        128
+      ],
+      "exists": true,
+      "actual_size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "fx/fx_hit.png",
+      "expected_size": [
+        128,
+        128
+      ],
+      "exists": true,
+      "actual_size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    },
+    {
+      "path": "fx/fx_blob_shadow.png",
+      "expected_size": [
+        128,
+        128
+      ],
+      "exists": true,
+      "actual_size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        227
+      ],
+      "has_transparency": true,
+      "size_ok": true,
+      "nonempty": true,
+      "passed": true
+    }
+  ]
+}

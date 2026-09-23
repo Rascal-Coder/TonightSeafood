@@ -97,6 +97,9 @@ dist/test/
 source/examples/
 dist/examples/
 
+# Keep project gameplay regressions; extension-generated tests remain ignored.
+!/tests/*.test.ts
+
 *.backup
 *.bak
 *.old

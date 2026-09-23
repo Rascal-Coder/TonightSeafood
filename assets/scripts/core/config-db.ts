@@ -84,6 +84,13 @@ export interface SlotDef {
   openAtSlotCount: number;
 }
 
+export interface LaneDef {
+  id: "left" | "middle" | "right";
+  minX: number;
+  maxX: number;
+  centerX: number;
+}
+
 export interface RecipeDef {
   id: string;
   name: string;
@@ -127,7 +134,9 @@ export interface GameData {
     layout: {
       spawnLineY: number;
       leakLineY: number;
+      battleZone: { x: number; y: number; w: number; h: number };
       pond: { x: number; y: number; w: number; h: number };
+      lanes: LaneDef[];
       slots: SlotDef[];
     };
     pond: {
@@ -138,10 +147,18 @@ export interface GameData {
       maxSpeed: number;
       separateRadius: number;
     };
-    net: { capacity: number; radius: number; cooldown: number; followLerp: number; maxCapacity: number };
+    net: { capacity: number; radius: number; cooldown: number; followLerp: number; maxCapacity: number;
+      grazeCoverage: number; captureCoverage: number; bodyRadius: Record<string, number> };
     slots: { initial: number; max: number; snapRadius: number };
     tick: { logicDt: number; spatialCell: number };
     combat: { openingGraceSeconds?: number; hitStopMs: { heavy: number; boss: number } };
+    feedback: {
+      attackSeconds: number; anticipationSeconds: number; hitSeconds: number;
+      recoilPixels: number; heavyRecoilPixels: number; shakeSeconds: number; shakePixels: number;
+      crabFrameSeconds: number;
+      idleFrameSeconds: number; mergeSeconds: number; catchSeconds: number;
+      starColors: string[]; starFxScale: number[];
+    };
   };
   seafood: SeafoodDef[];
   recipes: RecipeDef[];

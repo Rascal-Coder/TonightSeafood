@@ -27,6 +27,19 @@ export interface ScoopResult {
 
 const MAX_STAR = 5;
 
+/** Fraction of a critter's circular body covered by the net (not its sprite canvas). */
+export function circleCoverage(distance: number, netRadius: number, bodyRadius: number): number {
+  if (bodyRadius <= 0 || netRadius <= 0) return 0;
+  if (distance >= netRadius + bodyRadius) return 0;
+  if (distance <= Math.abs(netRadius - bodyRadius)) return Math.min(1, netRadius * netRadius / (bodyRadius * bodyRadius));
+  const d = Math.max(distance, Number.EPSILON), r = bodyRadius, R = netRadius;
+  const clamp = (v: number) => Math.max(-1, Math.min(1, v));
+  const area = r * r * Math.acos(clamp((d * d + r * r - R * R) / (2 * d * r)))
+    + R * R * Math.acos(clamp((d * d + R * R - r * r) / (2 * d * R)))
+    - Math.sqrt(Math.max(0, (-d + r + R) * (d + r - R) * (d - r + R) * (d + r + R))) / 2;
+  return Math.max(0, Math.min(1, area / (Math.PI * r * r)));
+}
+
 export function resolveScoop(caught: PondCritter[], pairStarBonus: number): ScoopResult {
   const groups = new Map<string, PondCritter[]>();
   const order: string[] = [];

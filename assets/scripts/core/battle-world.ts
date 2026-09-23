@@ -1,7 +1,7 @@
 import { applyArmor } from "./armor";
 import { ConfigDB, type GameData, type SeafoodDef, type SlotDef, type WaveDef } from "./config-db";
 import { canFieldMerge, nextStar } from "./merge";
-import { resolveScoop, type PondCritter } from "./scoop";
+import { circleCoverage, resolveScoop, type PondCritter } from "./scoop";
 import { SpatialHash } from "./spatial";
 
 export interface TrayItem {
@@ -55,6 +55,15 @@ export interface EnemyRt {
   slowLeft: number;
   slowMul: number;
   phase2: boolean;
+  laneId: "left" | "middle" | "right" | null;
+}
+
+interface UnitDragState {
+  uid: number;
+  originSlotId: string;
+  originX: number;
+  originY: number;
+  pushCooldowns: Map<number, number>;
 }
 
 export interface Shot {
@@ -70,6 +79,10 @@ export interface Shot {
   kind: string;
   recipeId: string | null;
   ownerUid: number;
+  speciesId: string;
+  star: number;
+  tint: string;
+  starScale: number;
 }
 
 export interface BattleFx {
@@ -78,6 +91,14 @@ export interface BattleFx {
   y?: number;
   text?: string;
   uid?: number;
+  heavy?: boolean;
+  directionX?: number;
+  directionY?: number;
+  speciesId?: string;
+  star?: number;
+  amount?: number;
+  remaining?: number;
+  combo?: number;
 }
 
 type Phase = "combat" | "draft" | "recipe" | "result";
@@ -137,6 +158,10 @@ export class BattleWorld {
   fx: BattleFx[] = [];
   tutorialDone = false;
   kills = 0;
+  leaks = 0;
+  lanternLost = 0;
+  leakCombo = 0;
+  leakComboWindow = 0;
   elapsed = 0;
   private movedNet = false;
   private merged = false;
@@ -158,6 +183,7 @@ export class BattleWorld {
   private sandbox: boolean;
   private rng: () => number;
   private hash: SpatialHash<EnemyRt>;
+  private unitDrag: UnitDragState | null = null;
 
   constructor(data: GameData, rng: () => number = Math.random, options?: { sandbox?: boolean }) {
     this.db = new ConfigDB(data);
@@ -196,6 +222,80 @@ export class BattleWorld {
 
   cancelPointer(): void { this.draggingNet = false; }
 
+  /** Start the formal-night field drag. The unit remains in combat while held. */
+  beginUnitDrag(uid: number): boolean {
+    if (this.phase !== "combat" || this.unitDrag) return false;
+    const unit = this.seafood.find((item) => item.uid === uid);
+    if (!unit) return false;
+    this.unitDrag = {
+      uid,
+      originSlotId: unit.slotId,
+      originX: unit.x,
+      originY: unit.y,
+      pushCooldowns: new Map(),
+    };
+    return true;
+  }
+
+  /** Keep attack origin and collision body on the pointer while the player drags. */
+  dragUnit(uid: number, x: number, y: number): boolean {
+    if (this.phase !== "combat" || this.unitDrag?.uid !== uid) return false;
+    const unit = this.seafood.find((item) => item.uid === uid);
+    if (!unit) return false;
+    const zone = this.db.data.balance.layout.battleZone;
+    unit.x = Math.max(zone.x + 36, Math.min(zone.x + zone.w - 36, x));
+    unit.y = Math.max(zone.y + 36, Math.min(zone.y + zone.h - 36, y));
+    return true;
+  }
+
+  /** Resolve snap / merge / swap, or spring back to the original slot. */
+  endUnitDrag(uid: number, x: number, y: number): boolean {
+    const drag = this.unitDrag;
+    const unit = this.seafood.find((item) => item.uid === uid);
+    if (!drag || drag.uid !== uid || !unit) return false;
+    const slot = nearest(this.openSlots(), x, y);
+    const valid = slot && Math.hypot(slot.x - x, slot.y - y) <= this.db.data.balance.slots.snapRadius;
+    if (!valid) {
+      this.restoreDraggedUnit(unit, drag);
+      this.unitDrag = null;
+      return false;
+    }
+    const other = this.seafood.find((item) => item.uid !== uid && item.slotId === slot.id);
+    if (other && canFieldMerge(unit, other)) {
+      other.star = nextStar(other.star);
+      other.displayScale = this.levelOf(other.speciesId, other.star).displayScale;
+      other.mergeFlash = 0.12;
+      this.seafood = this.seafood.filter((item) => item !== unit);
+      this.merged = true;
+      this.fx.push({ type: "merge", uid: other.uid, speciesId: other.speciesId, star: other.star, x: other.x, y: other.y, text: `${this.levelOf(other.speciesId, other.star).name} · ${other.star}星` });
+    } else {
+      if (other) {
+        other.slotId = drag.originSlotId;
+        other.x = drag.originX;
+        other.y = drag.originY;
+      }
+      unit.slotId = slot.id;
+      unit.x = slot.x;
+      unit.y = slot.y;
+      unit.recipeId = this.recipeId;
+    }
+    this.unitDrag = null;
+    return true;
+  }
+
+  cancelUnitDrag(): void {
+    if (!this.unitDrag) return;
+    const unit = this.seafood.find((item) => item.uid === this.unitDrag!.uid);
+    if (unit) this.restoreDraggedUnit(unit, this.unitDrag);
+    this.unitDrag = null;
+  }
+
+  private restoreDraggedUnit(unit: Deployed, drag: UnitDragState): void {
+    unit.slotId = drag.originSlotId;
+    unit.x = drag.originX;
+    unit.y = drag.originY;
+  }
+
   mergeTray(sourceUid: number, targetUid: number): boolean {
     if (this.phase !== "combat" || sourceUid === targetUid) return false;
     const a = this.tray.find((u) => u.uid === sourceUid), b = this.tray.find((u) => u.uid === targetUid);
@@ -203,7 +303,7 @@ export class BattleWorld {
     b.star = nextStar(b.star);
     this.tray = this.tray.filter((u) => u !== a);
     this.merged = true;
-    this.fx.push({ type: "merge", x: 375, y: 370, text: "托盘升星！" });
+    this.fx.push({ type: "merge", uid: b.uid, speciesId: b.speciesId, star: b.star, x: 375, y: 370, text: `${this.levelOf(b.speciesId, b.star).name} · ${b.star}星` });
     return true;
   }
 
@@ -220,7 +320,7 @@ export class BattleWorld {
       other.mergeFlash = 0.12;
       this.seafood = this.seafood.filter((item) => item !== unit);
       this.merged = true;
-      this.fx.push({ type: "merge", x: other.x, y: other.y, text: "升星！" });
+      this.fx.push({ type: "merge", uid: other.uid, speciesId: other.speciesId, star: other.star, x: other.x, y: other.y, text: `${this.levelOf(other.speciesId, other.star).name} · ${other.star}星` });
     } else {
       if (other) { other.slotId = unit.slotId; other.x = unit.x; other.y = unit.y; }
       unit.slotId = slot.id; unit.x = slot.x; unit.y = slot.y;
@@ -255,6 +355,7 @@ export class BattleWorld {
     this.pointerY = y;
     this.draggingNet = this.phase === "combat";
     this.travel = 0;
+    if (this.draggingNet) this.positionNet(x, y);
   }
 
   pointerMove(x: number, y: number): void {
@@ -262,17 +363,60 @@ export class BattleWorld {
     this.travel += Math.hypot(x - this.pointerX, y - this.pointerY);
     this.pointerX = x;
     this.pointerY = y;
+    this.positionNet(x, y);
     if (this.travel > 40) this.movedNet = true;
+  }
+
+  private positionNet(x: number, y: number): void {
+    const pond = this.db.data.balance.layout.pond;
+    this.netX = Math.max(pond.x, Math.min(pond.x + pond.w, x));
+    this.netY = Math.max(pond.y, Math.min(pond.y + pond.h, y));
+  }
+
+  /**
+   * One coverage judgment for the net mouth.
+   * Caught bodies are covered enough to scoop. Grazed bodies only brush the rim.
+   * Preview and release both read this.
+   */
+  aimNet(): { caught: PondCritter[]; grazed: PondCritter[] } {
+    const capture = this.db.data.balance.net.captureCoverage;
+    const graze = this.db.data.balance.net.grazeCoverage ?? 0.08;
+    const ranked = this.pond
+      .map((critter) => ({
+        critter,
+        coverage: this.netCoverage(critter),
+        dist: Math.hypot(critter.x - this.netX, critter.y - this.netY),
+      }))
+      .filter((item) => item.coverage >= graze)
+      .sort((a, b) => a.dist - b.dist || a.critter.uid - b.critter.uid);
+    const caught = ranked.filter((item) => item.coverage >= capture).slice(0, this.netCapacity).map((item) => item.critter);
+    const caughtIds = new Set(caught.map((item) => item.uid));
+    const grazed = ranked
+      .filter((item) => item.coverage < capture && !caughtIds.has(item.critter.uid))
+      .map((item) => item.critter);
+    return { caught, grazed };
+  }
+
+  /** The exact, capacity-limited catch, shared by aim feedback and release. */
+  previewScoop(): PondCritter[] {
+    return this.aimNet().caught;
+  }
+
+  netCoverage(critter: PondCritter): number {
+    return circleCoverage(Math.hypot(critter.x - this.netX, critter.y - this.netY), this.netRadius,
+      this.db.data.balance.net.bodyRadius?.[critter.speciesId] ?? 25);
   }
 
   pointerUp(x: number, y: number): void {
     this.pointerX = x;
     this.pointerY = y;
     if (!this.draggingNet) return;
+    this.positionNet(x, y);
     this.draggingNet = false;
     if (this.phase !== "combat") return;
     if (this.netCooldown > 0) {
       this.fx.push({ type: "wobble", x: this.netX, y: this.netY });
+      this.fx.push({ type: "toast", text: "捞网回收中，稍等一下" });
       return;
     }
     this.scoop();
@@ -294,7 +438,7 @@ export class BattleWorld {
         nearestUnit.displayScale = level.displayScale;
         nearestUnit.mergeFlash = 0.12;
         this.merged = true;
-        this.fx.push({ type: "merge", x: nearestUnit.x, y: nearestUnit.y, text: level.name });
+        this.fx.push({ type: "merge", uid: nearestUnit.uid, speciesId: nearestUnit.speciesId, star: nearestUnit.star, x: nearestUnit.x, y: nearestUnit.y, text: `${level.name} · ${nearestUnit.star}星` });
         return true;
       }
       this.tray.splice(index, 1);
@@ -447,7 +591,8 @@ export class BattleWorld {
     }
     this.skillCd = Math.max(0, this.skillCd - dt);
     this.netCooldown = Math.max(0, this.netCooldown - dt);
-    this.moveNet(dt);
+    this.leakComboWindow = Math.max(0, this.leakComboWindow - dt);
+    if (this.leakComboWindow <= 0) this.leakCombo = 0;
     this.tickPond(dt);
     if (!this.sandbox) this.tickSpawns(dt);
     this.tickEnemies(dt);
@@ -456,14 +601,6 @@ export class BattleWorld {
     this.tickDots(dt);
     this.tickLantern();
     if (!this.sandbox) this.tickWaveEnd();
-  }
-
-  private moveNet(dt: number): void {
-    if (!this.draggingNet) return;
-    const follow = this.db.data.balance.net.followLerp * 1.1;
-    const t = 1 - Math.exp(-follow * dt);
-    this.netX += (this.pointerX - this.netX) * t;
-    this.netY += (this.pointerY - this.netY) * t;
   }
 
   private tickPond(dt: number): void {
@@ -536,14 +673,12 @@ export class BattleWorld {
   }
 
   private scoop(): void {
-    const radius = this.netRadius;
-    const caught = this.pond
-      .map((critter) => ({ critter, dist: Math.hypot(critter.x - this.netX, critter.y - this.netY) }))
-      .filter((item) => item.dist <= radius)
-      .sort((a, b) => a.dist - b.dist)
-      .slice(0, this.netCapacity)
-      .map((item) => item.critter);
-    if (caught.length === 0) return;
+    const caught = this.previewScoop();
+    if (caught.length === 0) {
+      this.fx.push({ type: "wobble", x: this.netX, y: this.netY });
+      this.fx.push({ type: "toast", text: "空网啦，把海鲜圈进网里再松手" });
+      return;
+    }
     const ids = new Set(caught.map((item) => item.uid));
     this.pond = this.pond.filter((item) => !ids.has(item.uid));
     const result = resolveScoop(caught, this.mods.add("scoop.pairStarBonus"));
@@ -565,7 +700,7 @@ export class BattleWorld {
       this.fx.push({ type: "toast", x: this.netX, y: this.netY, text: "多了一味调料" });
     }
     this.netCooldown = this.db.data.balance.net.cooldown;
-    this.fx.push({ type: "splash", x: this.netX, y: this.netY });
+    this.fx.push({ type: "splash", x: this.netX, y: this.netY, text: `捞起 ${caught.length} 只` });
   }
 
   private tickSpawns(dt: number): void {
@@ -574,14 +709,17 @@ export class BattleWorld {
     this.spawnQueue = this.spawnQueue.filter((item) => item.at > this.waveTime);
     const wave = this.waves[this.waveIndex];
     for (const item of ready) {
-      const x = 80 + this.rng() * 590;
+      const lanes = this.db.data.balance.layout.lanes;
+      const lane = lanes[Math.min(lanes.length - 1, Math.floor(this.rng() * lanes.length))];
+      const x = lane.minX + this.rng() * (lane.maxX - lane.minX);
       if (item.id.startsWith("S")) this.spawnBoss(item.id, x);
-      else this.spawnEnemy(item.id, x, this.db.data.balance.layout.spawnLineY, wave.hpMult, wave.speedMult);
+      else this.spawnEnemy(item.id, x, this.db.data.balance.layout.spawnLineY, wave.hpMult, wave.speedMult, lane.id);
       this.spawned++;
     }
   }
 
-  private spawnEnemy(id: string, x: number, y: number, hpMult: number, speedMult: number): EnemyRt {
+  private spawnEnemy(id: string, x: number, y: number, hpMult: number, speedMult: number,
+    laneId: EnemyRt["laneId"] = null): EnemyRt {
     const def = this.db.requireEnemy(id);
     const waveBonus = 1 + (Math.max(1, this.waveNumber) - 1) * 0.08;
     const enemy: EnemyRt = {
@@ -598,7 +736,9 @@ export class BattleWorld {
       air: def.air,
       gold: Math.round(def.gold * waveBonus),
       boss: false,
-      leakDamage: this.db.data.balance.lantern.leakDamage,
+      leakDamage: id.startsWith("L")
+        ? this.db.data.balance.lantern.eliteLeakDamage
+        : this.db.data.balance.lantern.leakDamage,
       parked: false,
       leakPulse: 2,
       blockCd: 8,
@@ -610,6 +750,7 @@ export class BattleWorld {
       slowLeft: 0,
       slowMul: 1,
       phase2: false,
+      laneId: laneId ?? this.nearestLaneId(x),
     };
     this.enemies.push(enemy);
     return enemy;
@@ -644,7 +785,16 @@ export class BattleWorld {
       slowLeft: 0,
       slowMul: 1,
       phase2: false,
+      laneId: this.nearestLaneId(x),
     });
+  }
+
+  private nearestLaneId(x: number): EnemyRt["laneId"] {
+    let best = this.db.data.balance.layout.lanes[0];
+    for (const lane of this.db.data.balance.layout.lanes) {
+      if (!best || Math.abs(lane.centerX - x) < Math.abs(best.centerX - x)) best = lane;
+    }
+    return best?.id ?? null;
   }
 
   private tickEnemies(dt: number): void {
@@ -661,7 +811,7 @@ export class BattleWorld {
         enemy.leakPulse -= dt;
         if (enemy.leakPulse <= 0) {
           enemy.leakPulse = 2;
-          this.hurtLantern(enemy.leakDamage);
+          this.damagePot(enemy.leakDamage, enemy.x, false);
         }
       }
       if (enemy.rolling > 0) {
@@ -677,6 +827,7 @@ export class BattleWorld {
         }
       }
     }
+    this.tickDraggedUnitPush(dt);
     for (const unit of this.seafood) {
       if (!unit.unanchored) continue;
       unit.reanchorIn -= dt;
@@ -689,6 +840,26 @@ export class BattleWorld {
         unit.y = slot.y;
       }
       unit.unanchored = false;
+    }
+  }
+
+  private tickDraggedUnitPush(dt: number): void {
+    const drag = this.unitDrag;
+    if (!drag) return;
+    for (const [uid, left] of drag.pushCooldowns) {
+      const next = left - dt;
+      if (next <= 0) drag.pushCooldowns.delete(uid);
+      else drag.pushCooldowns.set(uid, next);
+    }
+    const unit = this.seafood.find((item) => item.uid === drag.uid);
+    if (!unit) return;
+    for (const enemy of this.enemies) {
+      if (enemy.air || enemy.defId === "E012" || drag.pushCooldowns.has(enemy.uid)) continue;
+      if (Math.hypot(unit.x - enemy.x, unit.y - enemy.y) > enemy.radius + 32) continue;
+      const push = 48 * (enemy.boss ? 0.35 : 1);
+      enemy.y = Math.min(this.db.data.balance.layout.spawnLineY, enemy.y + push);
+      drag.pushCooldowns.set(enemy.uid, 0.35);
+      this.fx.push({ type: "push", uid: enemy.uid, x: enemy.x, y: enemy.y, directionY: 1 });
     }
   }
 
@@ -733,6 +904,7 @@ export class BattleWorld {
       if (!target) continue;
       unit.cooldown = interval;
       unit.attackCount++;
+      this.fx.push({ type: "attack", uid: unit.uid, speciesId: unit.speciesId, star: unit.star, x: unit.x, y: unit.y });
       this.attacked = true;
       this.fire(unit, species, level.damage, level.range, target);
       if (recipe?.id === "C002" && unit.attackCount % (recipe.mods.chainEveryAttacks ?? 5) === 0) {
@@ -765,7 +937,7 @@ export class BattleWorld {
       if (target.air && !species.hitAir) return;
       this.hurt(target, rolled, unit.recipeId, unit, knock, false);
       this.hitStop = Math.max(this.hitStop, this.db.data.balance.combat.hitStopMs.heavy / 1000);
-      this.fx.push({ type: "claw", x: target.x, y: target.y });
+      this.fx.push({ type: "claw", x: target.x, y: target.y, speciesId: unit.speciesId, star: unit.star, uid: unit.uid });
       return;
     }
     if (species.attackType === "fan") {
@@ -779,9 +951,10 @@ export class BattleWorld {
         const angle = Math.acos(clamp(dy / dist, -1, 1));
         if (angle <= half) this.hurt(enemy, rolled, unit.recipeId, unit, species.knockback, false);
       }
-      this.fx.push({ type: "fan", x: unit.x, y: unit.y });
+      this.fx.push({ type: "fan", x: unit.x, y: unit.y, speciesId: unit.speciesId, star: unit.star, uid: unit.uid });
       return;
     }
+    const look = this.starLook(unit.star);
     const dist = Math.hypot(target.x - unit.x, target.y - unit.y) || 1;
     const speed = species.projectileSpeed || 480;
     this.shots.push({
@@ -791,13 +964,25 @@ export class BattleWorld {
       vx: ((target.x - unit.x) / dist) * speed,
       vy: ((target.y - unit.y) / dist) * speed,
       damage: rolled,
-      radius: species.projectileRadius || 10,
+      radius: (species.projectileRadius || 10) * look.starScale,
       maxHits: species.pierce > 0 ? species.pierce : 1,
       hit: new Set(),
       kind: species.attackType,
       recipeId: unit.recipeId,
       ownerUid: unit.uid,
+      speciesId: unit.speciesId,
+      star: unit.star,
+      tint: look.tint,
+      starScale: look.starScale,
     });
+  }
+
+  private starLook(star: number): { tint: string; starScale: number } {
+    const feel = this.db.data.balance.feedback;
+    const index = Math.max(0, Math.min(4, star - 1));
+    const colors = feel.starColors ?? ["#f5ddb0", "#8fdfbd", "#77ccff", "#ce9bff", "#ffd26c"];
+    const scales = feel.starFxScale ?? [1, 1.12, 1.3, 1.5, 1.75];
+    return { tint: colors[index] ?? "#fff1c3", starScale: scales[index] ?? 1 };
   }
 
   private chain(from: EnemyRt, damage: number, jumps: number, coeffs: number[]): void {
@@ -848,6 +1033,11 @@ export class BattleWorld {
       y: enemy.y,
       text: String(Math.round(dealt)),
       uid: enemy.uid,
+      heavy: !dot && source?.speciesId === "crab",
+      speciesId: source?.speciesId,
+      star: source?.star ?? 1,
+      directionX: source ? enemy.x - source.x : 0,
+      directionY: source ? enemy.y - source.y : 1,
     });
     if (recipeId === "C001" && source) {
       const recipe = this.db.requireRecipe("C001");
@@ -861,14 +1051,14 @@ export class BattleWorld {
       const hits = (source.hitCounts.get(enemy.uid) ?? 0) + 1;
       source.hitCounts.set(enemy.uid, hits);
       if (hits % (recipe.mods.explodeEveryHits ?? 4) === 0) {
-        const radius = recipe.mods.explodeRadius ?? 48;
+        const radius = (recipe.mods.explodeRadius ?? 48) * this.starLook(source.star).starScale;
         const boom = raw * (recipe.mods.explodeDamageMul ?? 0.4);
         for (const other of this.enemies) {
           if (Math.hypot(other.x - enemy.x, other.y - enemy.y) <= radius) {
             other.hp -= applyArmor(boom, other.armor, false);
           }
         }
-        this.fx.push({ type: "garlic", x: enemy.x, y: enemy.y });
+        this.fx.push({ type: "garlic", x: enemy.x, y: enemy.y, speciesId: source.speciesId, star: source.star, uid: source.uid });
       }
     }
     if (enemy.hp <= 0) this.kill(enemy);
@@ -920,9 +1110,8 @@ export class BattleWorld {
     const leakY = this.db.data.balance.layout.leakLineY;
     const alive: EnemyRt[] = [];
     for (const enemy of this.enemies) {
-      if (!enemy.boss && enemy.y <= leakY) {
-        this.hurtLantern(enemy.leakDamage);
-        this.fx.push({ type: "leak", x: enemy.x, y: leakY, text: enemy.name });
+      if (!enemy.boss && enemy.y - enemy.radius <= leakY) {
+        this.damagePot(enemy.leakDamage, enemy.x, true);
         continue;
       }
       alive.push(enemy);
@@ -930,8 +1119,21 @@ export class BattleWorld {
     this.enemies = alive;
   }
 
-  private hurtLantern(amount: number): void {
+  private damagePot(amount: number, x: number, countLeak: boolean): void {
+    if (countLeak) this.leaks++;
+    this.lanternLost += amount;
+    this.leakCombo = this.leakComboWindow > 0 ? this.leakCombo + 1 : 1;
+    this.leakComboWindow = 1.5;
     this.lantern = Math.max(0, this.lantern - amount);
+    this.fx.push({
+      type: "leak",
+      x,
+      y: this.db.data.balance.layout.leakLineY,
+      text: `-${amount}`,
+      amount,
+      remaining: this.lantern,
+      combo: this.leakCombo,
+    });
     if (this.lantern <= 0) this.finish("lose");
   }
 
@@ -964,7 +1166,7 @@ export class BattleWorld {
     if (this.phase === "result") return;
     this.phase = "result";
     this.result = result;
-    this.fx.push({ type: "result", text: result === "win" ? "灯还亮着" : "灯火灭了" });
+    this.fx.push({ type: "result", text: result === "win" ? "锅还烧着，收摊！" : "锅灭了" });
   }
 
   private spawnDeployed(item: TrayItem, slot: SlotDef): Deployed {

@@ -17,7 +17,8 @@ export class BattleSound {
   }
   effects(effects: BattleFx[]): void {
     const types = new Set(effects.map((f) => f.type));
-    if (types.has("result")) this.play(effects.find((f) => f.type === "result")?.text === "灯还亮着" ? "merge" : "lose");
+    if (types.has("result")) this.play(effects.find((f) => f.type === "result")?.text === "锅还烧着，收摊！" ? "merge" : "lose");
+    else if (types.has("leak")) this.play("lose");
     else if (types.has("merge")) this.play("merge");
     else if (types.has("splash")) this.play("scoop");
     else if (types.has("wave")) this.play("wave");

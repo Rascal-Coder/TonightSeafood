@@ -1,0 +1,42 @@
+[
+  {
+    "key": "shrimp-idle-v3",
+    "prompt": "Production 2D mobile game animation sprite sheet. Match the provided reference watercolor/handpainted chibi seafood art, warm dark outlines, expressive angry-cute eyes, clean readable silhouettes, not pixel art. Pure solid flat #FF00FF background everywhere including all enclosed gaps, NO gradients/shadows on background. Exact equal invisible grid, no labels/text/borders/effects. Same camera distance, same body scale, torso centered and stable bottom anchor; full body and every appendage within central 65 percent of every cell. ONLY coral shrimp from reference. 2x2 grid, four frame calm breathing / swimming idle loop: neutral; chest gently expands with feelers drifting left; neutral soft blink; feelers drifting right and relaxed tail. Clearly different leg and antenna poses, preserve shrimp curled silhouette, no attack. No baked water.",
+    "raw": "C:\\Users\\aaa\\.codex\\generated_images\\01a0cc51-1cbe-7171-ae30-18acbdc5dfc5\\exec-92374303-b2b3-4935-8ada-04afd89e984b.png",
+    "rows": 2,
+    "cols": 2,
+    "fixPrompt": "EDIT THE PROVIDED IMAGE. Mandatory background replacement: replace ALL the black/brown/gray background and all glow/shadow behind the characters with a single perfectly flat bright pure MAGENTA #FF00FF chroma key color. The final entire background MUST be vivid fluorescent magenta, not black, brown, gradient, transparent or checkerboard. Preserve the four characters and painted dark outlines. Preserve exact 2x2 layout and full silhouettes. No text. Also fix bottom right shrimp so it faces LEFT exactly like the other three frames; only feelers and legs may change."
+  },
+  {
+    "key": "crab-idle-v3",
+    "prompt": "Production 2D mobile game animation sprite sheet. Match the provided reference watercolor/handpainted chibi seafood art, warm dark outlines, expressive angry-cute eyes, clean readable silhouettes, not pixel art. Pure solid flat #FF00FF background everywhere including all enclosed gaps, NO gradients/shadows on background. Exact equal invisible grid, no labels/text/borders/effects. Same camera distance, same body scale, torso centered and stable bottom anchor; full body and every appendage within central 65 percent of every cell. ONLY turquoise crab from reference. 2x2 grid, four frame gentle breathing idle loop: claws half raised neutral, shoulders lift with claws slightly open, compress with eye blink, return with claws settling. Keep feet line stable and cream belly. No attack.",
+    "raw": "C:\\Users\\aaa\\.codex\\generated_images\\01a0cc51-1cbe-7171-ae30-18acbdc5dfc5\\exec-5683d19e-9bd1-474d-899e-332777523e30.png",
+    "rows": 2,
+    "cols": 2,
+    "fixPrompt": "EDIT THE PROVIDED IMAGE. Mandatory background replacement: replace ALL the black/brown/gray background and all glow/shadow behind the characters with a single perfectly flat bright pure MAGENTA #FF00FF chroma key color. The final entire background MUST be vivid fluorescent magenta, not black, brown, gradient, transparent or checkerboard. Preserve the four characters and painted dark outlines. Preserve exact 2x2 layout and full silhouettes. No text. Remove the floating exclamation marks above the top right crab."
+  },
+  {
+    "key": "scallop-idle-v3",
+    "prompt": "Production 2D mobile game animation sprite sheet. Match the provided reference watercolor/handpainted chibi seafood art, warm dark outlines, expressive angry-cute eyes, clean readable silhouettes, not pixel art. Pure solid flat #FF00FF background everywhere including all enclosed gaps, NO gradients/shadows on background. Exact equal invisible grid, no labels/text/borders/effects. Same camera distance, same body scale, torso centered and stable bottom anchor; full body and every appendage within central 65 percent of every cell. ONLY lavender scallop with cream face from reference. 2x2 grid, four frame shell breathing idle loop: open relaxed shell, shell slightly closes with blink, shell half closes while cream body compresses, shell reopens. Clearly readable opening/closing but same body size. No attack, no detached pearl.",
+    "raw": "C:\\Users\\aaa\\.codex\\generated_images\\01a0cc51-1cbe-7171-ae30-18acbdc5dfc5\\exec-2a002289-ef08-46f9-a344-f9ba413c40e9.png",
+    "rows": 2,
+    "cols": 2,
+    "fixPrompt": "EDIT THE PROVIDED IMAGE. Mandatory background replacement: replace ALL the black/brown/gray background and all glow/shadow behind the characters with a single perfectly flat bright pure MAGENTA #FF00FF chroma key color. The final entire background MUST be vivid fluorescent magenta, not black, brown, gradient, transparent or checkerboard. Preserve the four characters and painted dark outlines. Preserve exact 2x2 layout and full silhouettes. No text. "
+  },
+  {
+    "key": "fish-idle-v3",
+    "prompt": "Production 2D mobile game animation sprite sheet. Match the provided reference watercolor/handpainted chibi seafood art, warm dark outlines, expressive angry-cute eyes, clean readable silhouettes, not pixel art. Pure solid flat #FF00FF background everywhere including all enclosed gaps, NO gradients/shadows on background. Exact equal invisible grid, no labels/text/borders/effects. Same camera distance, same body scale, torso centered and stable bottom anchor; full body and every appendage within central 65 percent of every cell. ONLY golden yellow plump fish from reference. 2x2 grid, four frame in-place swimming idle loop: fins spread neutral, fins sweep back tail to left, fins spread blink, fins sweep forward tail to right. Subtle gill breathing, identical root/scale, no attack and no water.",
+    "raw": "C:\\Users\\aaa\\.codex\\generated_images\\01a0cc51-1cbe-7171-ae30-18acbdc5dfc5\\exec-0395e97b-b26f-441a-b349-9eda22f67233.png",
+    "rows": 2,
+    "cols": 2,
+    "fixPrompt": "EDIT THE PROVIDED IMAGE. Mandatory background replacement: replace ALL the black/brown/gray background and all glow/shadow behind the characters with a single perfectly flat bright pure MAGENTA #FF00FF chroma key color. The final entire background MUST be vivid fluorescent magenta, not black, brown, gradient, transparent or checkerboard. Preserve the four characters and painted dark outlines. Preserve exact 2x2 layout and full silhouettes. No text. Also fix bottom right fish so it faces RIGHT exactly like the other three frames; only fins and tail may change."
+  },
+  {
+    "key": "rat-diner-walk-v3",
+    "prompt": "Create a six-frame walking animation sprite sheet, EXACT 2 rows x 3 columns on vivid flat solid MAGENTA #FF00FF background, no shadow/gradient. A mischievous cute plump charcoal-gray restaurant raider rat with huge pink ears, cream belly, short curled pink tail, hungry brows, wearing a RED CHECKERED TRIANGULAR NECKERCHIEF around its neck. In its left paw it grips a small silver dinner FORK, right paw a blunt silver table KNIFE, both clearly recognizable, held close to chest. Both tools present all six frames. Front facing slightly three-quarter toward camera, walking toward viewer IN PLACE: alternating left and right feet, arms bounce slightly, scarf ends flutter. Same camera, same body scale, fixed torso/root and feet baseline, full body and knife/fork contained central 65% each equal square cell. Soft watercolor painted textures and thick warm dark brown outlines matching a cozy seafood night-market chibi game. Not realistic, not pixel art. No cheese, no blood, no text, no cell borders, no black backdrop. BACKGROUND ONLY bright pure #FF00FF.",
+    "raw": "C:\\Users\\aaa\\.codex\\generated_images\\01a0cc51-1cbe-7171-ae30-18acbdc5dfc5\\exec-5b86cf9a-6f9b-4105-a213-740057fb26ee.png",
+    "rows": 2,
+    "cols": 3,
+    "fixPrompt": ""
+  }
+]
